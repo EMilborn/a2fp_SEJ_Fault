@@ -1,0 +1,27 @@
+1. Moving Ship with a turning button
+2. Square Map with simple boundary, and boundary logic for moving ship
+3. Adding bullets to the ship, and adding free floating grey asteroids of
+different shapes
+to the simple map
+4. Adding another ship with the same abilities as the first ship. Adding
+shooting
+logic, and kill logic. Both of these ships compete in the square map. Ships will
+not disintegrate into pilots at this point. They will, however, die. (this is
+the ”Head Hunters” mode
+5. ”Pilot Execution”: this includes movement of pilots, kill logic for pilots,
+and regen- eration. This will be a crucial step in the roadmap
+6. We will then add some power-ups such as lasers, bombs, lancers, and reverse
+alls. This is all still happening in our simple square boundary map.
+7. Then we will add orange asteroids to hold power-ups, which would be able to
+be picked up.
+8. We will then start to add map objects such as breakable walls, open walls,
+beams, etc.
+9. We will then create separate maps.
+10. We will then add up to 4 players in the game. We will figure out the bugs,
+nuances,
+and other problems that arise in the game at that point.
+11. We will continue to include more elaborate features, if we have time, such
+as: anti-
+gravity wells, turrets, auto-balancing, better graphics, better user-interfaces.
+We will fix any and all bugs that come up, and continue to develop some other
+cool feature when they come to mind.
