@@ -1,4 +1,4 @@
-class Ship extends Entity{
+class Ship extends Entity {
   int x;
   int y;
   int ammo;

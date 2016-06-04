@@ -1,4 +1,4 @@
-class Entity{
+class Entity {
   //attributes
   int x;
   int y;
@@ -8,17 +8,17 @@ class Entity{
   int size;
 
   //Methods
-  void move(){
+  void move() {
     x += cos(radians(degree)) * speed;
     y += sin(radians(degree)) * speed;
     collision();
   }
-  
-  void print(){
+
+  void print() {
     rotate(angle);
     shape(shape, x, y, size, size);
     rotate(-angle);
   }
- 
-  void collision(){}
+
+  void collision() {}
 }
