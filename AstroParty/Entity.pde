@@ -20,7 +20,6 @@ class Entity {
     rotate(degree);
     shape(shape, x, y, size, size);
     rotate(degree);
-    shape(shape, x, y, size, size);
   }
 
   void collision() {}
