@@ -15,9 +15,9 @@ class Entity {
   }
 
   void print() {
-    rotate(angle);
+    rotate(degree);
     shape(shape, x, y, size, size);
-    rotate(-angle);
+    rotate(-degree);
   }
 
   void collision() {}
