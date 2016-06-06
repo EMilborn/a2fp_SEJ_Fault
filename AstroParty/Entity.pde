@@ -14,10 +14,13 @@ class Entity {
     collision();
   }
 
-  void print() {
-    rotate(angle);
+  void print() { 
+    
+    rotate(degree);
     shape(shape, x, y, size, size);
-    rotate(-angle);
+    rotate(degree);
+    shape(shape, x, y, size, size);
+    rotate(-degree);
   }
 
   void collision() {}
