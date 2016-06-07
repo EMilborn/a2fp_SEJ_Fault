@@ -18,7 +18,8 @@ class Entity {
   void update() { 
     
     rotate(degree);
-    shape(shape, x, y, size, size);
+    background(51);
+    shape(shape);
     rotate(degree);
   }
 
