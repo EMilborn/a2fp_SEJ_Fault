@@ -7,7 +7,10 @@ class Ship extends Entity {
     size = 10;
     x = width/2;
     y = height/2;
-    shape = createShape(RECT, x, y, size, size);
+    shape = createShape(RECT,-50,-25,100,50);
+    shape.setStroke(color(255));
+    shape.setStrokeWeight(4);
+    shape.setFill(color(127));
     degree = 90;
     speed = 10;
 }
