@@ -16,10 +16,11 @@ class Entity {
 
 
   void update() { 
+    move();
     rotate(degree);
     background(51);
     shape(shape, x, y);
-    rotate(degree);
+    rotate(-degree);
   }
 
   void collision() {}

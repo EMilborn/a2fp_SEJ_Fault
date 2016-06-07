@@ -8,7 +8,6 @@
   }
 
   void draw() {
-    ship.move();
     ship.update();
 }
   
