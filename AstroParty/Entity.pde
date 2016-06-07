@@ -15,7 +15,7 @@ class Entity {
   }
 
 
-  void print() { 
+  void update() { 
     
     rotate(degree);
     shape(shape, x, y, size, size);
