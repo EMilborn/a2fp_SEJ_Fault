@@ -13,5 +13,5 @@ class Ship extends Entity {
     shape.setFill(color(127));
     degree = 90;
     speed = 10;
-}
+  }
 }
