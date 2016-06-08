@@ -17,10 +17,9 @@ class Entity {
 
   void update() { 
     move();
-    rotate(degree);
-    background(51);
+    shape.rotate(radians(degree));
     shape(shape, x, y);
-    rotate(-degree);
+    shape.rotate(radians(-degree));
   }
 
   void collision() {}
