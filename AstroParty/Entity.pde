@@ -9,8 +9,14 @@ class Entity {
 
   //Methods
   void move() {
-    x += cos(radians(degree)) * speed;
-    y += sin(radians(degree)) * speed;
+    float addX = cos(radians(degree)) * speed;
+    float addY = sin(radians(degree)) * speed;
+    if (!(x + addX + size > width || x + addX - size < 0)) {
+      x += addX;
+    }
+    if (!(y + addY + size > height || y + addY - size < 0)) {
+      y += addY;
+    }
     collision();
   }
 
