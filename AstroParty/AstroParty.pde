@@ -3,8 +3,8 @@
   
   PShape rectangle;
   void setup() {
-    ship = new Ship();
     size(1000,1000);
+    ship = new Ship();
   }
 
   void draw() {

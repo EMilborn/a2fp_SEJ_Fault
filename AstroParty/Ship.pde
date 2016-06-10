@@ -1,10 +1,8 @@
 class Ship extends Entity {
-  int x;
-  int y;
   int ammo;
   boolean shield;
   Ship(){
-    size = 10;
+    size = 50;
     x = width/2;
     y = height/2;
     shape = loadShape("Butterfly.svg");
