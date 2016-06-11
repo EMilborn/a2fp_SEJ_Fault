@@ -1,8 +1,8 @@
 class Ship extends Entity {
-  Bullet[] ammo;
+  ArrayList<Bullet> bulletsFired;
   boolean keys[];
   char[] keyLetters;
-  
+
   boolean shield;
   int numBullets;
   int MAX_BULLETS = 3;
@@ -15,11 +15,8 @@ class Ship extends Entity {
     shape.scale(.3);
     degree = 50;
     speed = 5;
-
-    ammo = new Bullet[MAX_BULLETS];
-    for (int i = 0; i < ammo.length; i++) {
-      ammo[i] = new Bullet(this);
-    }
+    numBullets = MAX_BULLETS;
+    bulletsFired = new ArrayList<Bullet>();
     keys = new boolean[] { false, false };
   }
   
@@ -42,12 +39,16 @@ class Ship extends Entity {
     shape(shape, x, y);
     shape.rotate(radians(-degree));
     if (keys[0]) {
-          //shoot
+      //shoot
+      shoot();
     }
     if (keys[1]) {
-          //turn
-          degree += 3;
-    } 
+      //turn
+      degree += 3;
+    }
+    for (Bullet bullet : bulletsFired) {
+      bullet.draw();
+    }
   }
 
   boolean collision(Entity other) {
@@ -56,5 +57,13 @@ class Ship extends Entity {
       return true;
     }
     return false;
+  }
+  
+  void shoot() {
+    if (numBullets <= MAX_BULLETS && numBullets >= 0) {
+      Bullet bullet = new Bullet(this);
+      bullet.shot = true;
+      bulletsFired.add(bullet);
+    }
   }
 }

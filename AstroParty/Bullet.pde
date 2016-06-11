@@ -13,4 +13,12 @@ class Bullet extends Entity {
     parent = ship;
   }
   
+  void draw() {
+    if (shot) {
+      move();
+      shape.rotate(radians(degree));
+      shape(shape, x, y);
+      shape.rotate(radians(-degree));
+    }
+  }
 }
