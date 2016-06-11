@@ -6,11 +6,11 @@ class Entity {
   float degree;
   int speed;
   int size;
+  float addX;
+  float addY;
 
   //Methods
   void move() {
-    float addX = cos(radians(degree)) * speed;
-    float addY = sin(radians(degree)) * speed;
     if (!(x + addX + size > width || x + addX - size < 0)) {
       x += addX;
     }
@@ -20,8 +20,13 @@ class Entity {
     collision();
   }
 
+  void updateNormal(){
+    addX = cos(radians(degree)) * speed;
+    addY = sin(radians(degree)) * speed;
+  }
 
   void update() { 
+    updateNormal();
     move();
     shape.rotate(radians(degree));
     shape(shape, x, y);

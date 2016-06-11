@@ -64,6 +64,20 @@ class Ship extends Entity {
     return false;
   }
   
+  //
+  void collide(Entity [] others){
+    for(Entity other: others){
+      if(!this.equals(other)){
+        if(collision(other)){
+          
+  }
+  
+  void collide(ArrayList<Entity> others){
+    
+  }
+  
+  
+  
   Bullet shoot() {
     if (numBullets <= MAX_BULLETS && numBullets > 0) {
       Bullet bullet = new Bullet(this);
