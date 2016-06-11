@@ -1,6 +1,6 @@
 class Ship extends Entity {
   ArrayList<Bullet> bulletsFired;
-  int keys[];
+  boolean keys[];
   char[] keyLetters;
   int cooldown;
 
@@ -19,7 +19,7 @@ class Ship extends Entity {
     speed = 5;
     numBullets = MAX_BULLETS;
     bulletsFired = new ArrayList<Bullet>();
-    keys = new int[] { 0, 0 };
+    keys = new boolean[] { false, false };
     cooldown = BULLET_REGEN_COOLDOWN;
   }
   
@@ -41,8 +41,8 @@ class Ship extends Entity {
     shape.rotate(radians(degree));
     shape(shape, x, y);
     shape.rotate(radians(-degree));
-
-    if (keys[1] == 1) {
+    
+    if (keys[1]) {
       //turn
       degree += 3;
     }

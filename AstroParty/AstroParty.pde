@@ -32,12 +32,12 @@
   void keyPressed() {
     for (Ship ship : ships) {
       if (ship != null) {
-        if (key == ship.keyLetters[0] && ship.keys[0] == 0) {
+        if (key == ship.keyLetters[0] && !ship.keys[0]) {
           bulletsFired.add(ship.shoot());
-          ship.keys[0] = 1;
+          ship.keys[0] = true;
         }
         if (key == ship.keyLetters[1]) {
-          ship.keys[1] = 1;
+          ship.keys[1] = true;
         }
       } 
     }
@@ -46,12 +46,12 @@
   void keyReleased(){
     for (Ship ship : ships) {
       if (ship != null) {
-        if (key == ship.keyLetters[0] && ship.keys[0] == 1) {
-          ship.keys[0] = 0;
+        if (key == ship.keyLetters[0] && ship.keys[0]) {
+          ship.keys[0] = false;
         }
 
         if (key == ship.keyLetters[1]) {
-          ship.keys[1] = 0;
+          ship.keys[1] = false;
         }
       }
     }
