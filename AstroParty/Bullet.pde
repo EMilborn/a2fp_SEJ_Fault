@@ -2,7 +2,7 @@ class Bullet extends Entity {
   boolean shot;
   Ship parent;
   
-  Bullet(Ship ship){
+  Bullet(Ship ship) {
     x = ship.x;
     y = ship.y;
     shape = loadShape("Butterfly.svg");

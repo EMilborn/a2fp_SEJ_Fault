@@ -7,7 +7,7 @@ class Ship extends Entity {
   int numBullets;
   int MAX_BULLETS = 3;
   
-  Ship(){
+  Ship() {
     size = 50;
     x = width/2;
     y = height/2;
@@ -23,7 +23,7 @@ class Ship extends Entity {
     keys = new boolean[] { false, false };
   }
   
-  Ship(int x, int y, int degree, String shape){
+  Ship(int x, int y, int degree, String shape) {
     this();
     this.x = x;
     this.y = y;
@@ -31,20 +31,20 @@ class Ship extends Entity {
     this.shape = loadShape(shape);
   }
   
-  Ship(char[] keyLetters){
+  Ship(char[] keyLetters) {
     this();
     this.keyLetters = keyLetters;
   }
   
-  void update(){
+  void update() {
     move();
     shape.rotate(radians(degree));
     shape(shape, x, y);
     shape.rotate(radians(-degree));
-    if (keys[0]){
+    if (keys[0]) {
           //shoot
     }
-    if (keys[1]){
+    if (keys[1]) {
           //turn
           degree += 3;
     } 
