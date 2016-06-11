@@ -1,4 +1,4 @@
-ArrayList Bullet;
+  ArrayList<Bullet> bulletsFired;
   Ship[] ships;
   
   PShape rectangle;
@@ -10,6 +10,7 @@ ArrayList Bullet;
     ships[0] = new Ship(test);
     ships[1] = new Ship(test2);
     size(1000,500);
+    bulletsFired = new ArrayList<Bullet>();
   }
 
  
@@ -19,17 +20,25 @@ ArrayList Bullet;
       if (ship != null) {
        ship.update();
       }
-    } 
+    }
+    for (Bullet bullet : bulletsFired) {
+      if (bullet != null) {
+        bullet.draw();
+      }
+    }
   }
     
     
   void keyPressed() {
     for (Ship ship : ships) {
       if (ship != null) {
-        if (key == ship.keyLetters[0])
-          ship.shoot();
-        if (key == ship.keyLetters[1])
-          ship.keys[1] = true;
+        if (key == ship.keyLetters[0] && ship.keys[0] == 0) {
+          bulletsFired.add(ship.shoot());
+          ship.keys[0] = 1;
+        }
+        if (key == ship.keyLetters[1]) {
+          ship.keys[1] = 1;
+        }
       } 
     }
   }
@@ -37,8 +46,13 @@ ArrayList Bullet;
   void keyReleased(){
     for (Ship ship : ships) {
       if (ship != null) {
-        if (key == ship.keyLetters[1])
-          ship.keys[1] = false;
+        if (key == ship.keyLetters[0] && ship.keys[0] == 1) {
+          ship.keys[0] = 0;
+        }
+
+        if (key == ship.keyLetters[1]) {
+          ship.keys[1] = 0;
+        }
       }
     }
   }
