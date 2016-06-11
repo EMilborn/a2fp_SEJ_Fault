@@ -71,7 +71,8 @@ class Ship extends Entity {
   void collide(Entity [] others){
     for(Entity other: others){
       if(!this.equals(other)){
-        if(collision(other))
+        if(collision(other)){
+          
   }
   
   void collide(ArrayList<Entity> others){

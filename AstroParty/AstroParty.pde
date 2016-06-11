@@ -21,6 +21,7 @@
        ship.updateNormal();
        ship.collide(ships);
        ship.collide(bulletsFired);
+       ship.move();
       }
     }
     for (Bullet bullet : bulletsFired) {
