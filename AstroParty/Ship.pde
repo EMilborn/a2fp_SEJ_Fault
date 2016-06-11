@@ -37,10 +37,7 @@ class Ship extends Entity {
   }
   
   void update() {
-    move();
-    shape.rotate(radians(degree));
-    shape(shape, x, y);
-    shape.rotate(radians(-degree));
+    super.update();
     
     if (keys[1]) {
       //turn
