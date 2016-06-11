@@ -27,7 +27,7 @@ ArrayList Bullet;
     for (Ship ship : ships) {
       if (ship != null) {
         if (key == ship.keyLetters[0])
-          ship.keys[0] = true;
+          ship.shoot();
         if (key == ship.keyLetters[1])
           ship.keys[1] = true;
       } 
@@ -37,8 +37,6 @@ ArrayList Bullet;
   void keyReleased(){
     for (Ship ship : ships) {
       if (ship != null) {
-        if (key == ship.keyLetters[0])
-          ship.keys[0] = false;
         if (key == ship.keyLetters[1])
           ship.keys[1] = false;
       }
