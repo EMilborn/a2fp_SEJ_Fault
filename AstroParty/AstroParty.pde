@@ -1,4 +1,4 @@
-  ArrayList Bullet;
+ArrayList Bullet;
   Ship [] ship;
   
   PShape rectangle;
@@ -39,10 +39,3 @@
         }
       }
     }
-          
-        
-  
-
-  
-
-    
