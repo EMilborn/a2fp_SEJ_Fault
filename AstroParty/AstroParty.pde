@@ -26,10 +26,10 @@ ArrayList Bullet;
   void keyPressed() {
     for (Ship ship : ships) {
       if (ship != null) {
-        if (key == ship.keyLetters[0])
-          ship.shoot();
+        if (key == ship.keyLetters[0] && ship.keys[0] == 0)
+          ship.keys[0] = 1;
         if (key == ship.keyLetters[1])
-          ship.keys[1] = true;
+          ship.keys[1] = 1;
       } 
     }
   }
@@ -38,7 +38,9 @@ ArrayList Bullet;
     for (Ship ship : ships) {
       if (ship != null) {
         if (key == ship.keyLetters[1])
-          ship.keys[1] = false;
+          ship.keys[1] = 0;
+        if (key == ship.keyLetters[0] && keys[0] == 2)
+          ship.keys[0] = 0;
       }
     }
   }
