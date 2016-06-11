@@ -1,5 +1,5 @@
 ArrayList Bullet;
-  Ship [] ship;
+  Ship[] ship;
   
   PShape rectangle;
   //setup game
@@ -26,10 +26,10 @@ ArrayList Bullet;
   void keyPressed(){
     for(Ship i: ship){
       if(i != null){
-      if(key == i.keyLetters[0])
-        i.keys[0] = true;
-      if(key == i.keyLetters[1])
-        i.keys[1] = true;
+        if(key == i.keyLetters[0])
+          i.keys[0] = true;
+        if(key == i.keyLetters[1])
+          i.keys[1] = true;
       } 
     }
   }
@@ -37,10 +37,10 @@ ArrayList Bullet;
   void keyReleased(){
     for(Ship i: ship){
       if(i != null){
-      if(key == i.keyLetters[0])
-        i.keys[0] = false;
-      if(key == i.keyLetters[1])
-        i.keys[1] = false;
+        if(key == i.keyLetters[0])
+          i.keys[0] = false;
+        if(key == i.keyLetters[1])
+          i.keys[1] = false;
       }
     }
   }

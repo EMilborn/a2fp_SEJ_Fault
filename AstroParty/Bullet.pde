@@ -1,4 +1,4 @@
-class Bullet extends Entity{
+class Bullet extends Entity {
   boolean shot;
   Ship parent;
   

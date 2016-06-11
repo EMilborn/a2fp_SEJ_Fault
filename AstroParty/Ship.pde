@@ -1,10 +1,11 @@
 class Ship extends Entity {
-  Bullet [] ammo;
-  boolean [] keys;
-  char [] keyLetters;
+  Bullet[] ammo;
+  boolean keys[];
+  char[] keyLetters;
   
   boolean shield;
   int numBullets;
+  int MAX_BULLETS = 3;
   
   Ship(){
     size = 50;
@@ -14,14 +15,12 @@ class Ship extends Entity {
     shape.scale(.3);
     degree = 50;
     speed = 5;
-    numBullets = 3;
-    ammo = new Bullet[3];
-    ammo[0] = new Bullet(this);
-    ammo[1] = new Bullet(this);
-    ammo[2] = new Bullet(this);
-    keys = new boolean[2];
-    keys[0] = false;
-    keys[1] = false;
+
+    ammo = new Bullet[MAX_BULLETS];
+    for (int i = 0; i < ammo.length; i++) {
+      ammo[i] = new Bullet(this);
+    }
+    keys = new boolean[] { false, false };
   }
   
   Ship(int x, int y, int degree, String shape){
@@ -32,11 +31,9 @@ class Ship extends Entity {
     this.shape = loadShape(shape);
   }
   
-  Ship(char [] keyLetters){
+  Ship(char[] keyLetters){
     this();
-    this.keyLetters = new char [2];
-    this.keyLetters[0] = keyLetters[0];
-    this.keyLetters[1] = keyLetters[1];
+    this.keyLetters = keyLetters;
   }
   
   void update(){
@@ -44,12 +41,20 @@ class Ship extends Entity {
     shape.rotate(radians(degree));
     shape(shape, x, y);
     shape.rotate(radians(-degree));
-    if (keys[0]==true){
+    if (keys[0]){
           //shoot
     }
-    if (keys[1] == true){
+    if (keys[1]){
           //turn
           degree += 3;
     } 
+  }
+
+  boolean collision(Entity other) {
+    float dSqrd = ((other.x - x)*(other.x - x)) + ((other.y - y)*(other.y - y));
+    if (dSqrd <= (size+other.size) * (size+other.size)) {
+      return true;
+    }
+    return false;
   }
 }
