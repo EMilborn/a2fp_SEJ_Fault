@@ -1,7 +1,7 @@
 class Ship extends Entity {
-  Bullet [] ammo;
-  boolean [] keys;
-  String [] keyLetters;
+  Bullet[] ammo;
+  boolean[] keys;
+  String[] keyLetters;
   int MAX_BULLETS = 3;
   
   boolean shield;
@@ -12,7 +12,7 @@ class Ship extends Entity {
     x = width/2;
     y = height/2;
     shape = loadShape("Butterfly.svg");
-    shape.scale(9.3);
+    shape.scale(0.3);
     degree = 50;
     speed = 5;
     ammo = new Bullet[MAX_BULLETS];
