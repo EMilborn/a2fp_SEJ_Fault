@@ -4,25 +4,44 @@
   PShape rectangle;
   void setup() {
     ship = new Ship[4];
-    ship[0] = new Ship(
-    ship = new Ship();
+    char [] test = {'a', 's'};
+    ship[0] = new Ship(test);
     size(1000,1000);
-    ship = new Ship();
   }
 
   void draw() {
     background(51);
-    ship.update();
-    if (keyPressed==true){
-      ship.degree += 3;
+    for(Ship i: ship){
+      if(i != null){
+        i.update();
+      }
     }
+  }
     
     void keyPressed(){
       for(Ship i: ship){
-        if(key = i.keyLetters[0]){
-          keys[0] = 
+        if(i != null){
+        if(key == i.keyLetters[0])
+          i.keys[0] = true;
+        if(key == i.keyLetters[1])
+          i.keys[1] = true;
+        }
+      }
+    }
+    
+    void keyReleased(){
+      for(Ship i: ship){
+        if(i != null){
+        if(key == i.keyLetters[0])
+          i.keys[0] = false;
+        if(key == i.keyLetters[1])
+          i.keys[1] = false;
+        }
+      }
+    }
+          
         
-  }
+  
 
   
 
