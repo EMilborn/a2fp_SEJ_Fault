@@ -12,5 +12,4 @@ class Bullet extends Entity{
     shot = false;
     parent = ship;
   }
-  
 }
