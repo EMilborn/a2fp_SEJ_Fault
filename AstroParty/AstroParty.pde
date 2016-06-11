@@ -18,7 +18,9 @@
     background(51);
     for (Ship ship : ships) {
       if (ship != null) {
-       ship.update();
+       ship.updateNormal();
+       ship.collide(ships);
+       ship.collide(bulletsFired);
       }
     }
     for (Bullet bullet : bulletsFired) {
@@ -26,6 +28,7 @@
         bullet.draw();
       }
     }
+    
   }
     
     
