@@ -41,6 +41,7 @@ class Ship extends Entity {
     shape.rotate(radians(degree));
     shape(shape, x, y);
     shape.rotate(radians(-degree));
+
     if (keys[1] == 1) {
       //turn
       degree += 3;
@@ -73,5 +74,6 @@ class Ship extends Entity {
       numBullets--;
       return bullet; 
     }
+    return null;
   }
 }
