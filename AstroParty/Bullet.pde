@@ -13,7 +13,7 @@ class Bullet extends Entity {
     y = ship.y + vectors[1]*7;
 
     shape = loadShape("bullet.svg");
-    shape.scale(.1);
+    shape.scale(4);
     shot = true;
     parent = ship;
   }
