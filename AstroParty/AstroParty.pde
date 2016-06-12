@@ -14,7 +14,6 @@ void setup() {
   ships = new Ship[2];
   wins = new int[] {0, 0};
   size(1000,500);
-  startRound();
 }
 
 void draw() {
