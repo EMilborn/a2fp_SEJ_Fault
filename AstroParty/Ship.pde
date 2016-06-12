@@ -15,6 +15,7 @@ class Ship extends Entity {
   int state;
 
   Ship() {
+    super();
     size = 50;
     x = width/2;
     y = height/2;

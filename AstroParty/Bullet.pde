@@ -3,6 +3,8 @@ class Bullet extends Entity {
   Ship parent;
 
   Bullet(Ship ship) {
+    super();
+    border = 25;
     speed = ship.speed*2;
     degree = ship.degree;
     updateVectors();
