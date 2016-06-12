@@ -1,6 +1,9 @@
+int MENU = 0;
+int GAME = 1;
 ArrayList<Entity> bulletsFired;
 Ship [] ships;
 int[] wins;
+PImage NIGHT;
 
 // First key is to shoot, second key is to rotate
 char[] playerOneKeys = {'a', 's'};
@@ -17,13 +20,15 @@ void setup() {
   size(1000,750);
   collision = false;
   startRound();
+  NIGHT = loadImage("night.png");
+  NIGHT.loadPixels();
 }
 
 void draw() {
-  background(51);
-  if (state == 0) {
+  background(NIGHT);
+  if (state == MENU) {
     drawMenu();
-  } else if (state == 1) {
+  } else if (state == GAME) {
     drawRound();
   }
 }
@@ -57,7 +62,7 @@ void keyReleased(){
 }
 
 void startRound() {
-  ships[0] = new Ship(playerOneKeys, "blue");
+  ships[0] = new Ship(playerOneKeys, "green");
   ships[1] = new Ship(playerTwoKeys, "red");
   bulletsFired = new ArrayList<Entity>();
 }
