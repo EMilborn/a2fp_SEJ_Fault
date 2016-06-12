@@ -17,7 +17,7 @@
   void draw() {
     background(51);
     for (Ship ship : ships) {
-      if (ship != null) {
+      if (ship != null && ship.state == ship.ALIVE) {
         ship.update();
         ship.collide(ships);
         ship.collide(bulletsFired);

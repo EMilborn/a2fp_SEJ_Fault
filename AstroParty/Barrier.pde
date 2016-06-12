@@ -15,6 +15,4 @@ class Barrier extends Entity {
   void update(){
     shape(shape);
   }
-  
-
 }

@@ -1,13 +1,18 @@
 class Ship extends Entity {
+  int MAX_BULLETS = 3;
+  int BULLET_REGEN_COOLDOWN = 120; // 2 seconds
+  int ALIVE = 0;
+  int DEAD = 1;
+  int PILOT = 2;
+  
   ArrayList<Bullet> bulletsFired;
   boolean keys[];
   char[] keyLetters;
   int cooldown;
-
   boolean shield;
   int numBullets;
-  int MAX_BULLETS = 3;
-  int BULLET_REGEN_COOLDOWN = 120; // 2 seconds
+
+  int state;
   
   Ship() {
     size = 50;
@@ -21,6 +26,7 @@ class Ship extends Entity {
     bulletsFired = new ArrayList<Bullet>();
     keys = new boolean[] { false, false };
     cooldown = BULLET_REGEN_COOLDOWN;
+    state = ALIVE;
   }
   
   Ship(int x, int y, int degree, String shape) {
@@ -74,6 +80,7 @@ class Ship extends Entity {
         if (collision(other)) {
           if (other instanceof Bullet) {
             ((Bullet) other).shot = false;
+            state = DEAD; // PILOT for pilot execution?
           }
         }
       }
