@@ -57,8 +57,8 @@ void keyReleased(){
 }
 
 void startRound() {
-  ships[0] = new Ship(playerOneKeys);
-  ships[1] = new Ship(playerTwoKeys);
+  ships[0] = new Ship(playerOneKeys, "blue");
+  ships[1] = new Ship(playerTwoKeys, "red");
   bulletsFired = new ArrayList<Entity>();
 }
 
