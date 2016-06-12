@@ -4,7 +4,7 @@ class Ship extends Entity {
   int ALIVE = 0;
   int DEAD = 1;
   int PILOT = 2;
-  
+
   ArrayList<Bullet> bulletsFired;
   boolean keys[];
   char[] keyLetters;
@@ -13,7 +13,7 @@ class Ship extends Entity {
   int numBullets;
 
   int state;
-  
+
   Ship() {
     size = 50;
     x = width/2;
@@ -28,7 +28,7 @@ class Ship extends Entity {
     cooldown = BULLET_REGEN_COOLDOWN;
     state = ALIVE;
   }
-  
+
   Ship(int x, int y, int degree, String shape) {
     this();
     this.x = x;
@@ -36,23 +36,24 @@ class Ship extends Entity {
     this.degree = degree;
     this.shape = loadShape(shape);
   }
-  
+
   Ship(char[] keyLetters) {
     this();
     this.keyLetters = keyLetters;
   }
-  
+
   void update() {
     super.update();
-    
+
     if (keys[1]) {
       //turn
       degree += 3;
     }
-    
+
     for (Bullet bullet : bulletsFired) {
       bullet.update();
     }
+
     cooldown--;
     if (cooldown <= 0) {
       cooldown = BULLET_REGEN_COOLDOWN;
@@ -72,9 +73,8 @@ class Ship extends Entity {
     }
     return false;
   }
-  
-  //
-  void collide(Entity[] others){
+
+  void collide(Entity[] others) {
     for (Entity other: others) {
       if (!this.equals(other)) {
         if (collision(other)) {
@@ -86,19 +86,17 @@ class Ship extends Entity {
       }
     }
   }
-  
+
   void collide(ArrayList<Entity> others) {
     collide(others.toArray(new Entity[others.size()]));
   }
-  
-  
-  
+
   Bullet shoot() {
     if (numBullets <= MAX_BULLETS && numBullets > 0) {
       Bullet bullet = new Bullet(this);
       bullet.shot = true;
       numBullets--;
-      return bullet; 
+      return bullet;
     }
     return null;
   }

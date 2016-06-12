@@ -9,9 +9,9 @@ class Entity {
   float addX;
   float addY;
 
-  //Methods
+  // Deals with the movement of an Entity
   void move() {
-    updateNormal();
+    updateVectors();
     if (!(x + addX + size > width || x + addX - size < 0)) {
       x += addX;
     }
@@ -21,12 +21,13 @@ class Entity {
     collision();
   }
 
-  void updateNormal(){
+  void updateVectors() {
     addX = cos(radians(degree)) * speed;
     addY = sin(radians(degree)) * speed;
   }
 
-  void update() { 
+  // Moves and prints out the Entity
+  void update() {
     move();
     shape.rotate(radians(degree));
     shape(shape, x, y);

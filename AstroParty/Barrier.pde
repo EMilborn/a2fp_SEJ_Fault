@@ -2,8 +2,8 @@ class Barrier extends Entity {
   int w;
   int h;
   boolean breakable;
-  
-  Barrier(int newX, int newY, int newW, int newH, boolean newbreakable){
+
+  Barrier(int newX, int newY, int newW, int newH, boolean newbreakable) {
     w = newW;
     h = newH;
     x = newX;
@@ -11,8 +11,8 @@ class Barrier extends Entity {
     breakable = newbreakable;
     shape = createShape(RECT, x, y, w, h);
   }
-  
-  void update(){
+
+  void update() {
     shape(shape);
   }
 }
