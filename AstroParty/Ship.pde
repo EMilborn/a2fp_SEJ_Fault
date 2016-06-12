@@ -63,7 +63,7 @@ class Ship extends Entity {
   }
   
   void updateShape(){
-    shape = loadShape(col + "_" + numBullets + ".svg");
+    shape = loadShape("images/"+col + "_" + numBullets + ".svg");
     shape.scale(6);
   }
 

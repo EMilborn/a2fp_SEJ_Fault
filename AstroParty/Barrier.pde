@@ -1,18 +1,22 @@
-class Barrier extends Entity {
-  int w;
-  int h;
+class Barrier extends Entity {  
   boolean breakable;
-
-  Barrier(int newX, int newY, int newW, int newH, boolean newbreakable) {
-    w = newW;
-    h = newH;
+  
+  Barrier(int newX, int newY, int size, boolean newbreakable) {
     x = newX;
     y = newY;
+    this.size=size;
     breakable = newbreakable;
-    shape = createShape(RECT, x, y, w, h);
+    shape = loadShape("images/boundary_" + breakable + ".svg");
+    shape.scale(5);
   }
+  
+  Barrier(int X, int Y, boolean newbreakable){
+    this(X, Y, 50, newbreakable);
+  }
+  
+  
 
   void update() {
-    shape(shape);
+    shape(shape, x, y);
   }
 }
