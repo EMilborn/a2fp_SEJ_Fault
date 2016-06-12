@@ -82,9 +82,9 @@ class Entity {
   
   void update(Entity other){
     move(other);
-    shape.rotate(radians(degree));
-    shape(shape, x, y);
-    shape.rotate(radians(-degree));
+    shape.rotate(radians(other.degree));
+    shape(shape, other.x, other.y);
+    shape.rotate(radians(-other.degree));
   }
 
   void collision() {}

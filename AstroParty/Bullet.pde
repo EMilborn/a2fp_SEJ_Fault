@@ -7,10 +7,10 @@ class Bullet extends Entity {
     border = 25;
     speed = ship.speed*2;
     degree = ship.degree;
-    updateVectors();
+    float[] vectors = updateVectors();
     // Bullet will spawn slightly in front of the ship
-    x = ship.x + addX*7;
-    y = ship.y + addY*7;
+    x = ship.x + vectors[0]*7;
+    y = ship.y + vectors[1]*7;
 
     shape = loadShape("Butterfly.svg");
     shape.scale(.1);
