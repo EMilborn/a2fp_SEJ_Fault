@@ -37,7 +37,13 @@ void draw() {
   // Print out all bullets on screen
   for (int i = 0; i < bulletsFired.size(); i++) {
     Bullet bullet = (Bullet) bulletsFired.get(i);
-    if (bullet == null || !bullet.shot) {
+    if (bullet == null 
+    || !bullet.shot 
+    || bullet.x >= width - 10
+    || bullet.x <= 10
+    || bullet.y >= height - 10
+    || bullet.y <= 10
+    ) {
       // Maintainance
       bulletsFired.remove(i);
     } else {
