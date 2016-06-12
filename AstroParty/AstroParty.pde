@@ -1,17 +1,20 @@
 ArrayList<Entity> bulletsFired;
 Ship [] ships;
 int[] wins;
+ArrayList<Barrier> field;
 
 // First key is to shoot, second key is to rotate
 char[] playerOneKeys = {'a', 's'};
 char[] playerTwoKeys = {'f', 'g'};
 
 int state;
+int fieldSize;
 boolean collision;
 
 //setup game
 void setup() {
   state = 0;
+  fieldSize = 750;
   ships = new Ship [2]; 
   wins = new int[] {0, 0};
   size(1000,750);
@@ -60,10 +63,21 @@ void startRound() {
   ships[0] = new Ship(playerOneKeys, "blue");
   ships[1] = new Ship(playerTwoKeys, "red");
   bulletsFired = new ArrayList<Entity>();
+  field = new ArrayList<Barrier>();
+  setupField();
 }
 
+void setupField(){
+  for(int i=0; i < fieldSize; i+=50){
+    field.add(new Barrier(i,0, false));
+    field.add(new Barrier(fieldSize - i,fieldSize, false));
+    field.add(new Barrier(0, fieldSize - i, false));
+    field.add(new Barrier(fieldSize, i, false));
+  }
+}
 void drawRound() {
   // Print out all ships on screen
+  for(Barrier i: field) i.update();
   
   //ships[0].update(ships[1]);
   for (Ship ship : ships) {
