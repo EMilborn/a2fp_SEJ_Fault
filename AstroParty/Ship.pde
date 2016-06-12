@@ -74,21 +74,23 @@ class Ship extends Entity {
     return false;
   }
 
-  void collide(Entity[] others) {
+  boolean collide(Entity[] others) {
     for (Entity other: others) {
       if (!this.equals(other)) {
         if (collision(other)) {
           if (other instanceof Bullet) {
             ((Bullet) other).shot = false;
             state = DEAD; // PILOT for pilot execution?
+            return true;
           }
         }
       }
     }
+    return false;
   }
 
-  void collide(ArrayList<Entity> others) {
-    collide(others.toArray(new Entity[others.size()]));
+  boolean collide(ArrayList<Entity> others) {
+    return collide(others.toArray(new Entity[others.size()]));
   }
 
   Bullet shoot() {
