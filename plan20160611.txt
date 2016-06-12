@@ -1,0 +1,26 @@
+COLLISIONS
+	ship-ship
+	ship-boundary
+	ship-bullet
+	bullet-boundary
+
+DESIGN
+	boundary block
+	breakable block
+	2 color ships
+		3 states
+	pilot
+
+POWERUPS
+	Shield
+	Mines
+	Laser
+
+UI
+	Start Screen
+	Score Screen
+	Winner Screen
+	Map
+
+Read Me
+	Instructions (maybe in start screen??)
