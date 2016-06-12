@@ -12,17 +12,17 @@ class Ship extends Entity {
   int cooldown;
   boolean shield;
   int numBullets;
+  String col;
 
   int state;
   
   //------------------------------------------------------------------------------------------------------------------------
-  Ship() {
+  Ship(String newCol) {
     super();
+    col = newCol;
     size = 50;
     x = width/2;
     y = height/2;
-    shape = loadShape("triangle.svg");
-    shape.scale(.3);
     degree = 50;
     speed = 5;
     numBullets = MAX_BULLETS;
@@ -30,18 +30,18 @@ class Ship extends Entity {
     keys = new boolean[] { false, false };
     cooldown = BULLET_REGEN_COOLDOWN;
     state = ALIVE;
+    updateShape();
   }
 
-  Ship(int x, int y, int degree, String shape) {
-    this();
+  Ship(int x, int y, int degree, String newCol) {
+    this(newCol);
     this.x = x;
     this.y = y;
     this.degree = degree;
-    this.shape = loadShape(shape);
   }
 
-  Ship(char[] keyLetters) {
-    this();
+  Ship(char[] keyLetters, String newCol) {
+    this(newCol);
     this.keyLetters = keyLetters;
   }
   
@@ -61,6 +61,11 @@ class Ship extends Entity {
       other.update();
     }
   }
+  
+  void updateShape(){
+    shape = loadShape(col + "_" + numBullets + ".svg");
+    shape.scale(6);
+  }
 
   void updateHelp(){
     if (keys[1]) {
@@ -77,6 +82,7 @@ class Ship extends Entity {
       cooldown = BULLET_REGEN_COOLDOWN;
       if (numBullets <= 2) {
         numBullets++;
+        updateShape();
       }
     }
   }
@@ -115,6 +121,7 @@ class Ship extends Entity {
     if (numBullets <= MAX_BULLETS && numBullets > 0) {
       Bullet bullet = new Bullet(this);
       numBullets--;
+      updateShape();
       return bullet;
     }
     return null;
