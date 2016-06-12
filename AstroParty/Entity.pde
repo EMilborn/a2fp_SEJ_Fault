@@ -27,7 +27,6 @@ class Entity {
   }
 
   void update() { 
-    updateNormal();
     move();
     shape.rotate(radians(degree));
     shape(shape, x, y);

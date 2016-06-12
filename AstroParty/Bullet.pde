@@ -15,10 +15,7 @@ class Bullet extends Entity {
   
   void draw() {
     if (shot) {
-      move();
-      shape.rotate(radians(degree));
-      shape(shape, x, y);
-      shape.rotate(radians(-degree));
+      update();
     }
   }
 }

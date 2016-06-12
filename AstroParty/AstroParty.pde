@@ -21,7 +21,6 @@
        ship.update();
        ship.collide(ships);
        ship.collide(bulletsFired);
-       ship.move();
       }
     }
     for (Entity bullet : bulletsFired) {
