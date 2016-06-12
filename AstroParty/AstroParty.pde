@@ -5,7 +5,7 @@ ArrayList<Barrier> field;
 
 // First key is to shoot, second key is to rotate
 char[] playerOneKeys = {'a', 's'};
-char[] playerTwoKeys = {'f', 'g'};
+char[] playerTwoKeys = {'k', 'l'};
 
 int state;
 int fieldSize;
