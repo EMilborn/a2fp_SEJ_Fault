@@ -6,8 +6,11 @@ int[] wins;
 char[] playerOneKeys = {'a', 's'};
 char[] playerTwoKeys = {'f', 'g'};
 
+int state;
+
 //setup game
 void setup() {
+  state = 0;
   ships = new Ship[2];
   wins = new int[] {0, 0};
   size(1000,500);
@@ -16,6 +19,48 @@ void setup() {
 
 void draw() {
   background(51);
+  if (state == 0) {
+    drawMenu();
+  } else if (state == 1) {
+    drawRound();
+  }
+}
+
+void keyPressed() {
+  for (Ship ship : ships) {
+    if (ship != null) {
+      // Prevents user from shooting multiple bullets while holding down the key
+      if (key == ship.keyLetters[0] && !ship.keys[0]) {
+        bulletsFired.add(ship.shoot());
+        ship.keys[0] = true;
+      }
+      if (key == ship.keyLetters[1]) {
+        ship.keys[1] = true;
+      }
+    }
+  }
+}
+
+void keyReleased(){
+  for (Ship ship : ships) {
+    if (ship != null) {
+      if (key == ship.keyLetters[0] && ship.keys[0]) {
+        ship.keys[0] = false;
+      }
+      if (key == ship.keyLetters[1]) {
+        ship.keys[1] = false;
+      }
+    }
+  }
+}
+
+void startRound() {
+  ships[0] = new Ship(playerOneKeys);
+  ships[1] = new Ship(playerTwoKeys);
+  bulletsFired = new ArrayList<Entity>();
+}
+
+void drawRound() {
   // Print out all ships on screen
   for (Ship ship : ships) {
     if (ship != null && ship.state == ship.ALIVE) {
@@ -52,37 +97,25 @@ void draw() {
     }
   }
 }
-
-void keyPressed() {
-  for (Ship ship : ships) {
-    if (ship != null) {
-      // Prevents user from shooting multiple bullets while holding down the key
-      if (key == ship.keyLetters[0] && !ship.keys[0]) {
-        bulletsFired.add(ship.shoot());
-        ship.keys[0] = true;
-      }
-      if (key == ship.keyLetters[1]) {
-        ship.keys[1] = true;
-      }
-    }
-  }
+  
+void drawMenu() {
+  textSize(100);
+  text("ASTRO PARTY", 200, 100);
+  int rectWidth = 200;
+  int rectHeight = 100;
+  rect((width/2)-(rectWidth/2), height/2, rectWidth, rectHeight);
+  textSize(50);
+  fill(255, 0, 255);
+  text("Start!", 435, 300);
+  fill(255, 255, 255);
 }
 
-void keyReleased(){
-  for (Ship ship : ships) {
-    if (ship != null) {
-      if (key == ship.keyLetters[0] && ship.keys[0]) {
-        ship.keys[0] = false;
-      }
-      if (key == ship.keyLetters[1]) {
-        ship.keys[1] = false;
-      }
+void mousePressed() {
+  if (state == 0) {
+    if (mouseX >= 400 && mouseX <= 800 && 
+      mouseY >= 250 && mouseY <= 350) {
+        // Player pressed "Start"
+        state = 1;
     }
   }
-}
-
-void startRound() {
-  ships[0] = new Ship(playerOneKeys);
-  ships[1] = new Ship(playerTwoKeys);
-  bulletsFired = new ArrayList<Entity>();
 }
