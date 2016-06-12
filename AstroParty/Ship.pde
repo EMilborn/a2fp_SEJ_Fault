@@ -114,7 +114,6 @@ class Ship extends Entity {
   Bullet shoot() {
     if (numBullets <= MAX_BULLETS && numBullets > 0) {
       Bullet bullet = new Bullet(this);
-      bullet.shot = true;
       numBullets--;
       return bullet;
     }
