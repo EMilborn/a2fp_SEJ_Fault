@@ -57,6 +57,9 @@ class Ship extends Entity {
   }
 
   boolean collision(Entity other) {
+    if (other == null) {
+      return false;
+    }
     float dSqrd = ((other.x - x)*(other.x - x)) + ((other.y - y)*(other.y - y));
     if (dSqrd <= (size+other.size) * (size+other.size)) {
       return true;
@@ -65,15 +68,20 @@ class Ship extends Entity {
   }
   
   //
-  void collide(Entity [] others){
-    for(Entity other: others){
-      if(!this.equals(other)){
-        if(collision(other)){
-          
+  void collide(Entity[] others){
+    for (Entity other: others) {
+      if (!this.equals(other)) {
+        if (collision(other)) {
+          if (other instanceof Bullet) {
+            ((Bullet) other).shot = false;
+          }
+        }
+      }
+    }
   }
   
-  void collide(ArrayList<Entity> others){
-    
+  void collide(ArrayList<Entity> others) {
+    collide(others.toArray(new Entity[others.size()]));
   }
   
   

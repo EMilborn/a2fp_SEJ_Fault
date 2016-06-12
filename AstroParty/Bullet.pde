@@ -3,8 +3,8 @@ class Bullet extends Entity {
   Ship parent;
   
   Bullet(Ship ship) {
-    x = ship.x;
-    y = ship.y;
+    x = ship.x + 5;
+    y = ship.y + 50;
     shape = loadShape("Butterfly.svg");
     shape.scale(.1);
     degree = ship.degree;

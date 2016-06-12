@@ -11,6 +11,7 @@ class Entity {
 
   //Methods
   void move() {
+    updateNormal();
     if (!(x + addX + size > width || x + addX - size < 0)) {
       x += addX;
     }

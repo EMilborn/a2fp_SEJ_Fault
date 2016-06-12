@@ -1,4 +1,4 @@
-  ArrayList<Bullet> bulletsFired;
+  ArrayList<Entity> bulletsFired;
   Ship[] ships;
   
   PShape rectangle;
@@ -10,7 +10,7 @@
     ships[0] = new Ship(test);
     ships[1] = new Ship(test2);
     size(1000,500);
-    bulletsFired = new ArrayList<Bullet>();
+    bulletsFired = new ArrayList<Entity>();
   }
 
  
@@ -18,15 +18,15 @@
     background(51);
     for (Ship ship : ships) {
       if (ship != null) {
-       ship.updateNormal();
+       ship.update();
        ship.collide(ships);
        ship.collide(bulletsFired);
        ship.move();
       }
     }
-    for (Bullet bullet : bulletsFired) {
+    for (Entity bullet : bulletsFired) {
       if (bullet != null) {
-        bullet.draw();
+        ((Bullet) bullet).draw();
       }
     }
     
@@ -53,7 +53,6 @@
         if (key == ship.keyLetters[0] && ship.keys[0]) {
           ship.keys[0] = false;
         }
-
         if (key == ship.keyLetters[1]) {
           ship.keys[1] = false;
         }
