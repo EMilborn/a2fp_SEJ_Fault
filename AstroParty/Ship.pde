@@ -1,4 +1,5 @@
 class Ship extends Entity {
+  //------------------------------------------------------------------------------------------------------------------------
   int MAX_BULLETS = 3;
   int BULLET_REGEN_COOLDOWN = 120; // 2 seconds
   int ALIVE = 0;
@@ -13,7 +14,8 @@ class Ship extends Entity {
   int numBullets;
 
   int state;
-
+  
+  //------------------------------------------------------------------------------------------------------------------------
   Ship() {
     super();
     size = 50;
@@ -42,10 +44,25 @@ class Ship extends Entity {
     this();
     this.keyLetters = keyLetters;
   }
-
+  
+  //------------------------------------------------------------------------------------------------------------------------
   void update() {
     super.update();
+    updateHelp();
+  }
+  
+  
+  void update(Ship other){
+    if(collision(other)){
+      super.update(other);
+      updateHelp();
+    } else {
+      this.update();
+      other.update();
+    }
+  }
 
+  void updateHelp(){
     if (keys[1]) {
       //turn
       degree += 3;
@@ -63,7 +80,7 @@ class Ship extends Entity {
       }
     }
   }
-
+  
   boolean collision(Entity other) {
     if (other == null) {
       return false;

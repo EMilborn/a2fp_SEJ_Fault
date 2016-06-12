@@ -1,5 +1,5 @@
 ArrayList<Entity> bulletsFired;
-Ship[] ships;
+Ship [] ships;
 int[] wins;
 
 // First key is to shoot, second key is to rotate
@@ -7,13 +7,15 @@ char[] playerOneKeys = {'a', 's'};
 char[] playerTwoKeys = {'f', 'g'};
 
 int state;
+boolean collision;
 
 //setup game
 void setup() {
   state = 0;
-  ships = new Ship[2];
+  ships = new Ship [2]; 
   wins = new int[] {0, 0};
   size(1000,750);
+  collision = false;
   startRound();
 }
 
@@ -62,10 +64,11 @@ void startRound() {
 
 void drawRound() {
   // Print out all ships on screen
+  
+  //ships[0].update(ships[1]);
   for (Ship ship : ships) {
     if (ship != null && ship.state == ship.ALIVE) {
       ship.update();
-      ship.collide(ships);
       if (ship.collide(bulletsFired)) {
         if (ship == ships[0]) {
           // Player 2 won

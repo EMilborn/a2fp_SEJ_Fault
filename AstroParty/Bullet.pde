@@ -9,8 +9,8 @@ class Bullet extends Entity {
     degree = ship.degree;
     updateVectors();
     // Bullet will spawn slightly in front of the ship
-    x = ship.x + addX * 7;
-    y = ship.y + addY * 7;
+    x = ship.x + addX*7;
+    y = ship.y + addY*7;
 
     shape = loadShape("Butterfly.svg");
     shape.scale(.1);
