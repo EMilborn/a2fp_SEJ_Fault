@@ -18,19 +18,21 @@
     background(51);
     for (Ship ship : ships) {
       if (ship != null) {
-       ship.update();
-       ship.collide(ships);
-       ship.collide(bulletsFired);
-      }
-    }
-    for (Entity bullet : bulletsFired) {
-      if (bullet != null) {
-        ((Bullet) bullet).draw();
+        ship.update();
+        ship.collide(ships);
+        ship.collide(bulletsFired);
       }
     }
     
+    for (int i = 0; i < bulletsFired.size(); i++) {
+      Bullet bullet = (Bullet) bulletsFired.get(i);
+      if (bullet == null || !bullet.shot) {
+        bulletsFired.remove(i);
+      } else {
+        bullet.update();
+      }
+    }
   }
-    
     
   void keyPressed() {
     for (Ship ship : ships) {

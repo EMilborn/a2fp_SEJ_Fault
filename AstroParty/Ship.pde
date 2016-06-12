@@ -45,7 +45,7 @@ class Ship extends Entity {
     }
     
     for (Bullet bullet : bulletsFired) {
-      bullet.draw();
+      bullet.update();
     }
     cooldown--;
     if (cooldown <= 0) {

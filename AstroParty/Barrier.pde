@@ -1,4 +1,4 @@
-class Barrier extends Entity{
+class Barrier extends Entity {
   int w;
   int h;
   boolean breakable;
