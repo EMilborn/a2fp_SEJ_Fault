@@ -15,3 +15,21 @@
     Learned more about the default class pShape, and explored implementations
     Created general control and movement test with a butterfly sprite
 
+6/10/2016  | Shantanu & Elias & James | Basic behavior
+    Updated Devlog
+    Prevented ship from leaving map
+    Structural changes for multiple ships etc.,
+    	       Multithreading for multiple button presses
+	       List of ships instead of single ship   
+    
+6/11/2016  | Shantanu & Elias & James | Major gameplay mechanics
+    Added class Barrier
+    Added shooting mechanics
+    	  Bullet firing
+	  Ammo and ammo regen
+    Major progress on various types of collisions
+    Discussion of next steps, and integration into new plan    
+    
+6/12/2016  | Shantanu & Elias & James | Let the Marathon begin
+    Killed bullets when they exit map
+    Updated Devlog
