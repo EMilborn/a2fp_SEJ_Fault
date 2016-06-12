@@ -30,6 +30,7 @@ void draw() {
           wins[0]++;
         }
         startRound();
+        System.out.println("Player 1: " + wins[0] + "\nPlayer 2: " + wins[1]);
       }
     }
   }
