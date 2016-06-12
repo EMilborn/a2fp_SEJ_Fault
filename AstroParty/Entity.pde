@@ -1,7 +1,7 @@
 class Entity {
   //attributes
-  int x;
-  int y;
+  float x;
+  float y;
   PShape shape;
   float degree;
   int speed;

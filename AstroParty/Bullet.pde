@@ -3,12 +3,16 @@ class Bullet extends Entity {
   Ship parent;
   
   Bullet(Ship ship) {
-    x = ship.x + 5;
-    y = ship.y + 50;
+    speed = ship.speed*2;
+    degree = ship.degree;
+    updateNormal();
+    x = ship.x + addX * 7;
+    y = ship.y + addY * 7;
+    System.out.println(y + " " + ship.y);
+    System.out.println(x + " " + ship.x);
+
     shape = loadShape("Butterfly.svg");
     shape.scale(.1);
-    degree = ship.degree;
-    speed = ship.speed*2;
     shot = false;
     parent = ship;
   }
