@@ -7,11 +7,11 @@ class Barrier extends Entity {
     this.size=size;
     breakable = newbreakable;
     shape = loadShape("images/boundary_" + breakable + ".svg");
-    shape.scale(5);
+    shape.scale(4);
   }
   
   Barrier(int X, int Y, boolean newbreakable){
-    this(X, Y, 50, newbreakable);
+    this(X, Y, 30, newbreakable);
   }
   
   

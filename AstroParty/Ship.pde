@@ -17,10 +17,25 @@ class Ship extends Entity {
   int state;
   
   //------------------------------------------------------------------------------------------------------------------------
+  Ship(Ship copy){
+    super();
+    col = copy.col;
+    size = copy.size;
+    x = copy.x;
+    y = copy.y;
+    degree = copy.degree;
+    speed = copy.speed;
+    numBullets = copy.numBullets;
+    bulletsFired = copy.bulletsFired;
+    keys = copy.keys;
+    cooldown = copy.cooldown;
+    state = copy.state;
+    updateShape();
+  }
   Ship(String newCol) {
     super();
     col = newCol;
-    size = 50;
+    size = 30;
     x = width/2;
     y = height/2;
     degree = 50;
@@ -45,6 +60,10 @@ class Ship extends Entity {
     this.keyLetters = keyLetters;
   }
   
+  void updateShape(){
+    shape = loadShape("images/"+col + "_" + numBullets + ".svg");
+    shape.scale(3);
+  }
   //------------------------------------------------------------------------------------------------------------------------
   void update() {
     super.update();
@@ -62,10 +81,7 @@ class Ship extends Entity {
     }
   }
   
-  void updateShape(){
-    shape = loadShape("images/"+col + "_" + numBullets + ".svg");
-    shape.scale(6);
-  }
+
 
   void updateHelp(){
     if (keys[1]) {
@@ -85,6 +101,13 @@ class Ship extends Entity {
         updateShape();
       }
     }
+  }
+  
+  void borderCheck(){
+      if (!(x + addX + size > gameWidth - border || x + addX - size < border)) 
+        x += addX;
+      if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
+        y += addY;
   }
   
   boolean collision(Entity other) {

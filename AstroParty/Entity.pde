@@ -15,7 +15,7 @@ class Entity {
   Entity(){
     border = 20;
     gameHeight = height;
-    gameWidth = width*3/4;
+    gameWidth = 750;
   }
   
   //------------------------------------------------------------------------------------------------------------------------
@@ -24,12 +24,7 @@ class Entity {
     float [] add = updateVectors();
     addX = add[0];
     addY = add[1];
-    if (!(x + addX + size > gameWidth - border || x + addX - size < border)) {
-      x += addX;
-    }
-    if (!(y + addY + size > gameHeight - border || y + addY - size < border)) {
-      y += addY;
-    }
+    borderCheck();
   }
   
   void move(Entity other) {
@@ -62,12 +57,10 @@ class Entity {
   
   //------------------------------------------------------------------------------------------------------------------------
   void borderCheck(){
-    if (!(x + addX + size > gameWidth - border || x + addX - size < border)) {
-      x += addX;
-    }
-    if (!(y + addY + size > gameHeight - border || y + addY - size < border)) {
-      y += addY;
-    }
+      if (!(x + addX + size > gameWidth - border || x + addX - size < border)) 
+        x += addX;
+      if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
+        y += addY;
   }
   
   

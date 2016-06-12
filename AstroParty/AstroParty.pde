@@ -74,7 +74,7 @@ void startRound() {
 }
 
 void setupField(){
-  for(int i=0; i < fieldSize; i+=50){
+  for(int i=0; i < fieldSize; i+=30){
     field.add(new Barrier(i,0, false));
     field.add(new Barrier(fieldSize - i,fieldSize, false));
     field.add(new Barrier(0, fieldSize - i, false));
