@@ -8,14 +8,22 @@ class Entity {
   int size;
   float addX;
   float addY;
+  int gameWidth;
+  int gameHeight;
+  int border;
 
+  Entity(){
+    border = 20;
+    gameHeight = height;
+    gameWidth = width*3/4;
+  }
   // Deals with the movement of an Entity
   void move() {
     updateVectors();
-    if (!(x + addX + size > width || x + addX - size < 0)) {
+    if (!(x + addX + size > gameWidth - border || x + addX - size < border)) {
       x += addX;
     }
-    if (!(y + addY + size > height || y + addY - size < 0)) {
+    if (!(y + addY + size > gameHeight - border || y + addY - size < border)) {
       y += addY;
     }
     collision();

@@ -13,7 +13,7 @@ void setup() {
   state = 0;
   ships = new Ship[2];
   wins = new int[] {0, 0};
-  size(1000,500);
+  size(1000,750);
   startRound();
 }
 
@@ -85,10 +85,10 @@ void drawRound() {
     Bullet bullet = (Bullet) bulletsFired.get(i);
     if (bullet == null 
     || !bullet.shot 
-    || bullet.x >= width - 10
-    || bullet.x <= 10
-    || bullet.y >= height - 10
-    || bullet.y <= 10
+    || bullet.x >= bullet.gameWidth - bullet.border
+    || bullet.x <= bullet.border
+    || bullet.y >= bullet.gameHeight - bullet.border
+    || bullet.y <= bullet.border
     ) {
       // Maintainance
       bulletsFired.remove(i);
