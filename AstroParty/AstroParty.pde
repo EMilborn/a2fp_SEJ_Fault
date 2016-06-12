@@ -21,10 +21,10 @@ void setup() {
   fieldSize = 750;
   ships = new Ship [2]; 
   wins = new int[] {0, 0};
-  size(1000,750);
+  size(1250,750);
   collision = false;
   startRound();
-  NIGHT = loadImage("night.png");
+  NIGHT = loadImage("night.jpg");
   NIGHT.loadPixels();
 }
 
