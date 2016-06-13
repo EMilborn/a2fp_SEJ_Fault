@@ -71,6 +71,15 @@ void startRound() {
   ships[0].setXY(75, 75);
   ships[1].setXY(675, 675);
   ships[1].degree = 230; // 50 + 180
+  
+  // Autobalance
+  if (wins[0] - wins[1] > 2) {
+    ships[0].shield = true;
+    ships[0].updateShape();
+  } else if (wins[1] - wins[0] > 2) {
+    ships[1].shield = true;
+    ships[1].updateShape();
+  }
   bulletsFired = new ArrayList<Entity>();
   field = new ArrayList<Barrier>();
   setupField();
@@ -114,7 +123,10 @@ void drawRound() {
 
       if (ship.collideBullet(bulletsFired)) {
         if (ship == ships[0]) {
-          if (ship.state == ship.PILOT) {
+          if (ship.shield) {
+            ship.shield = false;
+            ship.updateShape();
+          } else if (ship.state == ship.PILOT) {
             // Player 2 won
             wins[1]++;
             startRound();
@@ -125,7 +137,10 @@ void drawRound() {
             ship.shape.scale(1.5);
           }
         } else {
-          if (ship.state == ship.PILOT) {
+          if (ship.shield) {
+            ship.shield = false;
+            ship.updateShape();
+          } else if (ship.state == ship.PILOT) {
             // Player 1 won
             wins[1]++;
             startRound();

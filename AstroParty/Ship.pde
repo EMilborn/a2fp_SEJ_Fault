@@ -53,7 +53,11 @@ class Ship extends Entity {
   }
 
   void updateShape() {
-    shape = loadShape("images/"+col + "_" + numBullets + ".svg");
+    if (shield) {
+      shape = loadShape("images/"+col + "_" + numBullets + "_shield.svg");
+    } else {
+      shape = loadShape("images/"+col + "_" + numBullets + ".svg");
+    }
     shape.scale(3);
   }
   //------------------------------------------------------------------------------------------------------------------------
@@ -94,7 +98,6 @@ class Ship extends Entity {
     if (state == PILOT) {
       respawn--;
       if (respawn <= 0) {
-        System.out.println("respawning");
         numBullets = 3;
         shape = loadShape("images/"+col + "_" + numBullets + ".svg");
         shape.scale(3);
