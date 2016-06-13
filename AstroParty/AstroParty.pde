@@ -28,7 +28,6 @@ void setup() {
   startRound();
   NIGHT = loadImage("night.jpg");
   NIGHT.loadPixels();
-  setWinner("blue");
 }
 
 void draw() {
@@ -47,7 +46,12 @@ void keyPressed() {
     if (ship != null) {
       // Prevents user from shooting multiple bullets while holding down the key
       if (key == ship.keyLetters[0] && !ship.keys[0]) {
-        bulletsFired.add(ship.shoot());
+        if (ship.state == ship.PILOT) {
+          // Shoot button propels pilot
+          ship.speed = 4;
+        } else {
+          bulletsFired.add(ship.shoot());
+        }
         ship.keys[0] = true;
       }
       if (key == ship.keyLetters[1]) {
@@ -61,6 +65,9 @@ void keyReleased(){
   for (Ship ship : ships) {
     if (ship != null) {
       if (key == ship.keyLetters[0] && ship.keys[0]) {
+        if (ship.state == ship.PILOT) {
+          ship.speed = 0;
+        }
         ship.keys[0] = false;
       }
       if (key == ship.keyLetters[1]) {
@@ -144,6 +151,7 @@ void drawRound() {
             ship.state = ship.PILOT;
             ship.shape = loadShape("images/green_pilot.svg");
             ship.shape.scale(1.5);
+            ship.speed = 0;
           }
         } else {
           if (ship.shield) {
@@ -162,6 +170,7 @@ void drawRound() {
             ship.state = ship.PILOT;
             ship.shape = loadShape("images/red_pilot.svg");
             ship.shape.scale(1.5);
+            ship.speed = 0;
           }
         }
       }

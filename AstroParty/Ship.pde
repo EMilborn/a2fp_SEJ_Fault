@@ -103,6 +103,7 @@ class Ship extends Entity {
         shape.scale(3);
         state = ALIVE;
         respawn = SHIP_RESPAWN_TIME;
+        speed = 4;
       }
     }
   }
