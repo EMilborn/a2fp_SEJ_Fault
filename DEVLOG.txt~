@@ -1,0 +1,17 @@
+5/23/2016 | Shantanu & Elias & James | Project Proposal:
+    Worked on LaTeX proposal and submitted comprehensive proposal!
+
+5/31/2016 | Shantanu & Elias & James | DEVLOG + plan:
+    Updated DEVLOG file and added a plan!
+
+6/3/2016  | Shantanu & Elias & James | First classes:
+    Created overarching class Entity as well as Ship which extends it...
+
+6/6/2016  | Shantanu & Elias & James | Further development
+    Fixed a few bugs 
+    Added more to the methods of Ship.pde
+
+6/7/2016  | Shantanu & Elias & James | Exploring class pShape
+    Learned more about the default class pShape, and explored implementations
+    Created general control and movement test with a butterfly sprite
+
