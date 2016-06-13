@@ -15,7 +15,6 @@ char[] playerTwoKeys = {'k', 'l'};
 
 int state;
 int fieldSize;
-boolean collision;
 
 //setup game
 void setup() {
@@ -24,7 +23,6 @@ void setup() {
   ships = new Ship[2];
   wins = new int[] {0, 0};
   size(1250,750);
-  collision = false;
   startRound();
   NIGHT = loadImage("start.png");
   NIGHT.loadPixels();
@@ -196,14 +194,15 @@ void drawRound() {
 }
 
 void mousePressed() {
-  if (state == 0) {
-    System.out.println(mouseX + " " + mouseY);
+  if (state == MENU || state == WINNER) {
     if (mouseX >= 450 && mouseX <= 800 &&
       mouseY >= 430 && mouseY <= 520) {
         // Player pressed "Start"
         state = GAME;
         NIGHT = loadImage("night.jpg");
         NIGHT.loadPixels();
+        wins = new int[] {0, 0};
+        startRound();
     }
   }
 }
@@ -212,7 +211,7 @@ void setWinner(String col) {
   winner = new Ship(width/2, height/2, 0, col);
   winner.speed = 0;
   state = WINNER;
-  NIGHT = loadImage("blank_night.png");
+  NIGHT = loadImage("end.png");
   NIGHT.loadPixels();
 }
 
