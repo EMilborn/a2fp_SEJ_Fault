@@ -128,6 +128,11 @@ void drawRound() {
       //new implementation - end*/
       ship.move();
       ship.borderCheck();
+      int collisionLoss = ships[0].collidePilot(ships[1]); //Pilot gets hit by ship
+      if(collisionLoss != -1){
+        win(collisionLoss);
+        return;
+      }
       ship.update();
 
       if (ship.collideBullet(bulletsFired)) {
@@ -137,13 +142,7 @@ void drawRound() {
             ship.updateShape();
           } else if (ship.state == ship.PILOT) {
             // Player 2 won
-            wins[1]++;
-            scoreboard[1].y -= 110;
-            if (wins[1] == 5) {
-              setWinner(ship.col);
-            } else {
-              startRound();
-            }
+            win(1);
           } else {
             // Player 1 has been hit, but isn't dead.
             ship.state = ship.PILOT;
@@ -157,13 +156,7 @@ void drawRound() {
             ship.updateShape();
           } else if (ship.state == ship.PILOT) {
             // Player 1 won
-            wins[0]++;
-            scoreboard[0].y -= 110;
-            if (wins[0] == 5) {
-              setWinner(ship.col);
-            } else {
-              startRound();
-            }
+            win(0);
           } else {
             // Player 2 has been hit, but isn't dead.
             ship.state = ship.PILOT;
@@ -175,6 +168,8 @@ void drawRound() {
       }
     }
   }
+  
+  
 
   // Print out all bullets on screen
   for (int i = 0; i < bulletsFired.size(); i++) {
@@ -197,6 +192,16 @@ void drawRound() {
   
   for (Ship ship : scoreboard) {
     ship.update();
+  }
+}
+
+void win(int num){
+  wins[num]++;
+  scoreboard[num].y -= 110;
+  if (wins[num] == 5) {
+    setWinner(ships[num].col);
+  } else {
+    startRound();
   }
 }
 

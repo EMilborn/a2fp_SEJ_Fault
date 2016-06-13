@@ -114,7 +114,17 @@ class Ship extends Entity {
       if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
         y += addY;
   }
-
+  
+  int collidePilot(Ship other){
+      if(collision(other)){
+           if(this.state == PILOT && other.state == ALIVE){
+             return 1;
+           } else if(this.state == ALIVE && other.state == PILOT){
+             return 0;
+           }
+      }
+    return -1;
+  }
   boolean collision(Entity other) {
     if (other == null) {
       return false;
