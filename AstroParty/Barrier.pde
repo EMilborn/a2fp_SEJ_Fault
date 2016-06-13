@@ -10,7 +10,7 @@ class Barrier extends Entity {
     shape.scale(4);
   }
 
-  Barrier(int x, int y, boolean breakable){
+  Barrier(int x, int y, boolean breakable) {
     this(x, y, 15, breakable);
   }
 

@@ -25,7 +25,7 @@ void setup() {
   wins = new int[] {0, 0};
   size(1250,750);
   startRound();
-  NIGHT = loadImage("start.png");
+  NIGHT = loadImage("images/start.png");
   NIGHT.loadPixels();
 }
 
@@ -80,7 +80,7 @@ void startRound() {
   ships[0].setXY(75, 75);
   ships[1].setXY(675, 675);
   ships[1].degree = 230; // 50 + 180
-  
+
   // Autobalance
   if (wins[1] - wins[0] > 2) {
     ships[0].shield = true;
@@ -94,8 +94,8 @@ void startRound() {
   setupField();
 }
 
-void setupField(){
-  for(int i=0; i < fieldSize; i+=30){
+void setupField() {
+  for (int i=0; i < fieldSize; i+=30) {
     field.add(new Barrier(i,0, false));
     field.add(new Barrier(fieldSize - i,fieldSize, false));
     field.add(new Barrier(0, fieldSize - i, false));
@@ -105,27 +105,9 @@ void setupField(){
 void drawRound() {
   // Print out all ships on screen
   for(Barrier i: field) i.update();
-  //ships[0].update(ships[1]);
   for (Ship ship : ships) {
     if (ship != null && ship.state != ship.DEAD) {
 
-      /*//new implementation - start
-      ship.move();
-      ship.x += ship.addX;
-
-      if (ship.collide(field.toArray(new Entity[field.size()]))) {
-        ship.x -= ship.addX;
-        System.out.println("collided with x...");
-      }
-
-      ship.y += ship.addY;
-      if (ship.collide(field.toArray(new Entity[field.size()]))) {
-        ship.y -= ship.addY;
-        System.out.println("collided with y...");
-    }
-
-      ship.update();
-      //new implementation - end*/
       ship.move();
       ship.borderCheck();
       int collisionLoss = ships[0].collidePilot(ships[1]); //Pilot gets hit by ship
@@ -168,8 +150,6 @@ void drawRound() {
       }
     }
   }
-  
-  
 
   // Print out all bullets on screen
   for (int i = 0; i < bulletsFired.size(); i++) {
@@ -189,13 +169,13 @@ void drawRound() {
       bullet.update();
     }
   }
-  
+
   for (Ship ship : scoreboard) {
     ship.update();
   }
 }
 
-void win(int num){
+void win(int num) {
   wins[num]++;
   scoreboard[num].y -= 110;
   if (wins[num] == 5) {
@@ -211,7 +191,7 @@ void mousePressed() {
       mouseY >= 430 && mouseY <= 520) {
         // Player pressed "Start"
         state = GAME;
-        NIGHT = loadImage("night.jpg");
+        NIGHT = loadImage("images/night.jpg");
         NIGHT.loadPixels();
         wins = new int[] {0, 0};
         startRound();
@@ -224,7 +204,7 @@ void setWinner(String col) {
   winner = new Ship(width/2, height/2, 0, col);
   winner.speed = 0;
   state = WINNER;
-  NIGHT = loadImage("end.png");
+  NIGHT = loadImage("images/end.png");
   NIGHT.loadPixels();
 }
 
