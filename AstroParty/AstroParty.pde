@@ -26,15 +26,13 @@ void setup() {
   size(1250,750);
   collision = false;
   startRound();
-  NIGHT = loadImage("night.jpg");
+  NIGHT = loadImage("start.png");
   NIGHT.loadPixels();
 }
 
 void draw() {
   background(NIGHT);
-  if (state == MENU) {
-    drawMenu();
-  } else if (state == GAME) {
+  if (state == GAME) {
     drawRound();
   } else if (state == WINNER) {
     drawWinner();
@@ -197,24 +195,15 @@ void drawRound() {
   }
 }
 
-void drawMenu() {
-  textSize(100);
-  text("ASTRO PARTY", 200, 100);
-  int rectWidth = 200;
-  int rectHeight = 100;
-  rect(400, 230, rectWidth, rectHeight);
-  textSize(50);
-  fill(255, 0, 255);
-  text("Start!", 435, 300);
-  fill(255, 255, 255);
-}
-
 void mousePressed() {
   if (state == 0) {
-    if (mouseX >= 400 && mouseX <= 800 &&
-      mouseY >= 250 && mouseY <= 350) {
+    System.out.println(mouseX + " " + mouseY);
+    if (mouseX >= 450 && mouseX <= 800 &&
+      mouseY >= 430 && mouseY <= 520) {
         // Player pressed "Start"
-        state = 1;
+        state = GAME;
+        NIGHT = loadImage("night.jpg");
+        NIGHT.loadPixels();
     }
   }
 }
