@@ -35,7 +35,7 @@ class Ship extends Entity {
   Ship(String newCol) {
     super();
     col = newCol;
-    size = 30;
+    size = 15;
     x = width/2;
     y = height/2;
     degree = 50;

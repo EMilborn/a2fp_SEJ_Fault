@@ -84,13 +84,11 @@ void setupField(){
 void drawRound() {
   // Print out all ships on screen
   for(Barrier i: field) i.update();
-  Ship temp;
   //ships[0].update(ships[1]);
   for (Ship ship : ships) {
     if (ship != null && ship.state == ship.ALIVE) {
       
-      //new implementation - start
-      temp = new Ship(ship);
+      /*//new implementation - start
       ship.move();
       ship.x += ship.addX;
       
@@ -106,13 +104,13 @@ void drawRound() {
     }
       
       ship.update();
-      //new implementation - end
+      //new implementation - end*/
       
-      /*old implementation
+      
       ship.move();
       ship.borderCheck();
       ship.update();
-      */
+      
       
       if (ship.collideBullet(bulletsFired)) {
         if (ship == ships[0]) {
