@@ -4,32 +4,42 @@
 5/31/2016 | Shantanu & Elias & James | DEVLOG + plan:
     Updated DEVLOG file and added a plan!
 
-6/3/2016  | Shantanu & Elias & James | First classes:
+6/3/2016 | Shantanu & Elias & James | First classes:
     Created overarching class Entity as well as Ship which extends it...
 
-6/6/2016  | Shantanu & Elias & James | Further development
-    Fixed a few bugs 
+6/6/2016 | Shantanu & Elias & James | Further development
+    Fixed a few bugs
     Added more to the methods of Ship.pde
 
-6/7/2016  | Shantanu & Elias & James | Exploring class pShape
+6/7/2016 | Shantanu & Elias & James | Exploring class pShape
     Learned more about the default class pShape, and explored implementations
     Created general control and movement test with a butterfly sprite
 
-6/10/2016  | Shantanu & Elias & James | Basic behavior
+6/10/2016 | Shantanu & Elias & James | Basic behavior
     Updated Devlog
     Prevented ship from leaving map
     Structural changes for multiple ships etc.,
-    	       Multithreading for multiple button presses
-	       List of ships instead of single ship   
-    
-6/11/2016  | Shantanu & Elias & James | Major gameplay mechanics
+        Multithreading for multiple button presses
+        List of ships instead of single ship
+
+6/11/2016 | Shantanu & Elias & James | Major gameplay mechanics
     Added class Barrier
     Added shooting mechanics
-    	  Bullet firing
-	  Ammo and ammo regen
+        Bullet firing
+    Implement ammo and ammo regen
     Major progress on various types of collisions
-    Discussion of next steps, and integration into new plan    
-    
-6/12/2016  | Shantanu & Elias & James | Let the Marathon begin
-    Killed bullets when they exit map
-    Updated Devlog
+    Discussion of next steps, and integration into new plan
+        Only two players instead of 1-4
+
+6/12/2016 | Shantanu & Elias & James | Let the Marathon begin
+    Fixed bullet collisions
+    Created start menu
+    Added a bunch of graphics
+    Improved collisions between ships and map borders
+
+6/13/2016 | Shantanu & Elias & James | More marathoning!
+    Implemented scoreboard race graphic
+    Created screen for winning player
+    Implemented shields
+    Implemented pilot execution mechanics
+    Add screen for winning player
