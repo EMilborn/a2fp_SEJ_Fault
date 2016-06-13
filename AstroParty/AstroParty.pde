@@ -91,17 +91,17 @@ void drawRound() {
       temp = new Ship(ship);
       ship.move();
       ship.moveCheckX();
-      /*
+      
       if(ship.collide(field.toArray(new Entity[field.size()]))) {
         System.out.println("a");
         ship = new Ship(temp);
-      }*/
+      }
       ship.moveCheckY();
       
-      /*if(ship.collide(field.toArray(new Entity[field.size()]))) {
+      if(ship.collide(field.toArray(new Entity[field.size()]))) {
         System.out.println("b");
         ship = new Ship(temp);
-      }*/
+      }
       
       /*
       temp = new Ship(ship);
