@@ -2,6 +2,11 @@
 
 An implementation of the popular multi-player game [Astro Party](http://rustymoyher.com/astroparty/), written using Processing.
 
+<br>
+![Alt text](AstroParty/images/start.png?raw=true "Format")
+
+<br>
+
 ## Gameplay
 
 Like the original version, there are only two keys used to control a ship.
