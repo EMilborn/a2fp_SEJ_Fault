@@ -5,6 +5,7 @@ int WINNER = 2;
 Ship winner;
 ArrayList<Entity> bulletsFired;
 Ship[] ships;
+Ship[] scoreboard;
 int[] wins;
 PImage NIGHT;
 ArrayList<Barrier> field;
@@ -137,6 +138,7 @@ void drawRound() {
           } else if (ship.state == ship.PILOT) {
             // Player 2 won
             wins[1]++;
+            scoreboard[1].y -= 100;
             if (wins[1] == 5) {
               setWinner(ship.col);
             } else {
@@ -156,6 +158,7 @@ void drawRound() {
           } else if (ship.state == ship.PILOT) {
             // Player 1 won
             wins[0]++;
+            scoreboard[0].y -= 100;
             if (wins[0] == 5) {
               setWinner(ship.col);
             } else {
@@ -191,6 +194,10 @@ void drawRound() {
       bullet.update();
     }
   }
+  
+  for (Ship ship : scoreboard) {
+    ship.update();
+  }
 }
 
 void mousePressed() {
@@ -203,6 +210,7 @@ void mousePressed() {
         NIGHT.loadPixels();
         wins = new int[] {0, 0};
         startRound();
+        initializeScoreboard();
     }
   }
 }
@@ -220,4 +228,12 @@ void drawWinner() {
   text("WINNER!", width/2-150, 200);
   winner.update();
   winner.degree += 2;
+}
+
+void initializeScoreboard() {
+  scoreboard = new Ship[2];
+  scoreboard[0] = new Ship(1040, 650, 270, "green");
+  scoreboard[0].speed = 0;
+  scoreboard[1] = new Ship(1140, 650, 270, "red");
+  scoreboard[1].speed = 1;
 }
