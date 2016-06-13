@@ -138,7 +138,7 @@ void drawRound() {
           } else if (ship.state == ship.PILOT) {
             // Player 2 won
             wins[1]++;
-            scoreboard[1].y -= 100;
+            scoreboard[1].y -= 110;
             if (wins[1] == 5) {
               setWinner(ship.col);
             } else {
@@ -158,7 +158,7 @@ void drawRound() {
           } else if (ship.state == ship.PILOT) {
             // Player 1 won
             wins[0]++;
-            scoreboard[0].y -= 100;
+            scoreboard[0].y -= 110;
             if (wins[0] == 5) {
               setWinner(ship.col);
             } else {
