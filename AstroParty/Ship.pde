@@ -2,6 +2,7 @@ class Ship extends Entity {
   //------------------------------------------------------------------------------------------------------------------------
   int MAX_BULLETS = 3;
   int BULLET_REGEN_COOLDOWN = 120; // 2 seconds
+  int SHIP_RESPAWN_TIME = 300; // 5 seconds
   int ALIVE = 0;
   int DEAD = 1;
   int PILOT = 2;
@@ -10,6 +11,7 @@ class Ship extends Entity {
   boolean keys[];
   char[] keyLetters;
   int cooldown;
+  int respawn;
   boolean shield;
   int numBullets;
   String col;
@@ -44,6 +46,7 @@ class Ship extends Entity {
     bulletsFired = new ArrayList<Bullet>();
     keys = new boolean[] { false, false };
     cooldown = BULLET_REGEN_COOLDOWN;
+    respawn = SHIP_RESPAWN_TIME;
     state = ALIVE;
     updateShape();
   }
@@ -101,6 +104,17 @@ class Ship extends Entity {
         updateShape();
       }
     }
+    if (state == PILOT) {
+      respawn--;
+      if (respawn <= 0) {
+        System.out.println("respawning");
+        numBullets = 3;
+        shape = loadShape("images/"+col + "_" + numBullets + ".svg");
+        shape.scale(3);
+        state = ALIVE;
+        respawn = SHIP_RESPAWN_TIME;
+      }
+    }
   }
   
   
@@ -110,14 +124,7 @@ class Ship extends Entity {
       if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
         y += addY;
   }
-  
-  
-  
-  
-  
-  
-  
-  
+
   boolean collision(Entity other) {
     if (other == null) {
       return false;
@@ -129,27 +136,21 @@ class Ship extends Entity {
     return false;
   }
 
-  boolean collideBullet(Entity[] others) {
-    for (Entity other: others) {
-      if (!this.equals(other)) {
-        if (collision(other)) {
-          if (other instanceof Bullet) {
-            ((Bullet) other).shot = false;
-            state = DEAD; // PILOT for pilot execution?
-            return true;
-          }
+  boolean collideBullet(ArrayList<Entity> others) {
+    for (int i = 0; i < others.size(); i++) {
+      Bullet bullet = (Bullet) others.get(i);
+      if (!this.equals(bullet)) {
+        if (collision(bullet)) {
+          others.set(i, null);
+          return true;
         }
       }
     }
     return false;
   }
 
-  boolean collideBullet(ArrayList<Entity> others) {
-    return collide(others.toArray(new Entity[others.size()]));
-  }
-
   Bullet shoot() {
-    if (numBullets <= MAX_BULLETS && numBullets > 0) {
+    if (numBullets <= MAX_BULLETS && numBullets > 0 && state == ALIVE) {
       Bullet bullet = new Bullet(this);
       numBullets--;
       updateShape();

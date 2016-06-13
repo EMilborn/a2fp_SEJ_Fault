@@ -89,7 +89,7 @@ void drawRound() {
   for(Barrier i: field) i.update();
   //ships[0].update(ships[1]);
   for (Ship ship : ships) {
-    if (ship != null && ship.state == ship.ALIVE) {
+    if (ship != null && ship.state != ship.DEAD) {
       
       /*//new implementation - start
       ship.move();
@@ -111,18 +111,31 @@ void drawRound() {
       ship.move();
       ship.borderCheck();
       ship.update();
-      
-      
+
       if (ship.collideBullet(bulletsFired)) {
         if (ship == ships[0]) {
-          // Player 2 won
-          wins[1]++;
+          if (ship.state == ship.PILOT) {
+            // Player 2 won
+            wins[1]++;
+            startRound();
+          } else {
+            // Player 1 has been hit, but isn't dead.
+            ship.state = ship.PILOT;
+            ship.shape = loadShape("images/green_pilot.svg");
+            ship.shape.scale(1.5);
+          }
         } else {
-          // Player 1 won
-          wins[0]++;
+          if (ship.state == ship.PILOT) {
+            // Player 1 won
+            wins[1]++;
+            startRound();
+          } else {
+            // Player 2 has been hit, but isn't dead.
+            ship.state = ship.PILOT;
+            ship.shape = loadShape("images/red_pilot.svg");
+            ship.shape.scale(1.5);
+          }
         }
-        startRound();
-        System.out.println("Player 1: " + wins[0] + "\nPlayer 2: " + wins[1]);
       }
     }
   }
@@ -131,7 +144,6 @@ void drawRound() {
   for (int i = 0; i < bulletsFired.size(); i++) {
     Bullet bullet = (Bullet) bulletsFired.get(i);
     if (bullet == null 
-    || !bullet.shot 
     || bullet.x >= bullet.gameWidth - bullet.border
     || bullet.x <= bullet.border
     || bullet.y >= bullet.gameHeight - bullet.border

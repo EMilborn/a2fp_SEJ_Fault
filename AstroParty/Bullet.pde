@@ -15,7 +15,6 @@ class Bullet extends Entity {
 
     shape = loadShape("images/bullet.svg");
     shape.scale(2);
-    shot = true;
     parent = ship;
   }
 }
