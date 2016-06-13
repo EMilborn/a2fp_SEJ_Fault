@@ -1,5 +1,4 @@
 class Entity {
-  //attributes
   float x;
   float y;
   PShape shape;
@@ -55,10 +54,10 @@ class Entity {
   }
 
   //------------------------------------------------------------------------------------------------------------------------
-  void moveCheckX(){
+  void moveCheckX() {
       x += addX;
   }
-  void moveCheckY(){
+  void moveCheckY() {
       y += addY;
   }
 
@@ -96,19 +95,6 @@ class Entity {
     shape(shape, x, y);
     shape.rotate(radians(-degree));
   }
-
-  /*
-  void update(Entity other){
-    move(other);
-
-    shape.rotate(radians(degree));
-    shape(shape, x, y);
-    shape.rotate(radians(-degree));
-
-    other.shape.rotate(radians(other.degree));
-    shape(other.shape, other.x, other.y);
-    other.shape.rotate(radians(-other.degree));
-  }*/
 
   void collision() {}
 }

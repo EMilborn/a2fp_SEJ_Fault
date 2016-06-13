@@ -66,17 +66,6 @@ class Ship extends Entity {
     updateHelp();
   }
 
-  /*
-  void update(Ship other){
-    if(collision(other)){
-      super.update(other);
-      updateHelp();
-    } else {
-      this.update();
-      other.update();
-    }
-  }*/
-
   void updateHelp() {
     if (keys[1]) {
       //turn
@@ -95,6 +84,7 @@ class Ship extends Entity {
         updateShape();
       }
     }
+
     if (state == PILOT) {
       respawn--;
       if (respawn <= 0) {
@@ -109,12 +99,14 @@ class Ship extends Entity {
   }
 
   void borderCheck() {
-      if (!(x + addX + size > gameWidth - border || x + addX - size < border)) 
+      if (!(x + addX + size > gameWidth - border || x + addX - size < border)) {
         x += addX;
-      if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
+      }
+      if (!(y + addY + size > gameHeight - border || y + addY - size < border)) {
         y += addY;
+      }
   }
-  
+
   int collidePilot(Ship other){
       if(collision(other)){
            if(this.state == PILOT && other.state == ALIVE){
