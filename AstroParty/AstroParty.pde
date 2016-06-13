@@ -1,11 +1,13 @@
 int MENU = 0;
 int GAME = 1;
+int WINNER = 2;
+
+Ship winner;
 ArrayList<Entity> bulletsFired;
-Ship [] ships;
+Ship[] ships;
 int[] wins;
 PImage NIGHT;
 ArrayList<Barrier> field;
-
 
 // First key is to shoot, second key is to rotate
 char[] playerOneKeys = {'a', 's'};
@@ -26,6 +28,7 @@ void setup() {
   startRound();
   NIGHT = loadImage("night.jpg");
   NIGHT.loadPixels();
+  setWinner("blue");
 }
 
 void draw() {
@@ -34,6 +37,8 @@ void draw() {
     drawMenu();
   } else if (state == GAME) {
     drawRound();
+  } else if (state == WINNER) {
+    drawWinner();
   }
 }
 
@@ -73,10 +78,10 @@ void startRound() {
   ships[1].degree = 230; // 50 + 180
   
   // Autobalance
-  if (wins[0] - wins[1] > 2) {
+  if (wins[1] - wins[0] > 2) {
     ships[0].shield = true;
     ships[0].updateShape();
-  } else if (wins[1] - wins[0] > 2) {
+  } else if (wins[0] - wins[1] > 2) {
     ships[1].shield = true;
     ships[1].updateShape();
   }
@@ -129,7 +134,11 @@ void drawRound() {
           } else if (ship.state == ship.PILOT) {
             // Player 2 won
             wins[1]++;
-            startRound();
+            if (wins[1] == 5) {
+              setWinner(ship.col);
+            } else {
+              startRound();
+            }
           } else {
             // Player 1 has been hit, but isn't dead.
             ship.state = ship.PILOT;
@@ -142,8 +151,12 @@ void drawRound() {
             ship.updateShape();
           } else if (ship.state == ship.PILOT) {
             // Player 1 won
-            wins[1]++;
-            startRound();
+            wins[0]++;
+            if (wins[0] == 5) {
+              setWinner(ship.col);
+            } else {
+              startRound();
+            }
           } else {
             // Player 2 has been hit, but isn't dead.
             ship.state = ship.PILOT;
@@ -195,4 +208,19 @@ void mousePressed() {
         state = 1;
     }
   }
+}
+
+void setWinner(String col) {
+  winner = new Ship(width/2, height/2, 0, col);
+  winner.speed = 0;
+  state = WINNER;
+  NIGHT = loadImage("blank_night.png");
+  NIGHT.loadPixels();
+}
+
+void drawWinner() {
+  textSize(75);
+  text("WINNER!", width/2-150, 200);
+  winner.update();
+  winner.degree += 2;
 }
