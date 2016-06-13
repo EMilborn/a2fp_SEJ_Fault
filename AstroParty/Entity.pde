@@ -12,22 +12,22 @@ class Entity {
   int gameHeight;
   int border;
 
-  Entity(){
+  Entity() {
     border = 20;
     gameHeight = height;
     gameWidth = 750;
   }
-  
+
   //------------------------------------------------------------------------------------------------------------------------
   // Deals with the movement of an Entity
   void move() {
-    float [] add = updateVectors();
+    float[] add = updateVectors();
     addX = add[0];
     addY = add[1];
   }
-  
+
   void move(Entity other) {
-    float [] add = updateVectors(other);
+    float[] add = updateVectors(other);
     addX = add[0];
     addY = add[1];
     other.addX = addX;
@@ -37,23 +37,23 @@ class Entity {
   }
 
   //------------------------------------------------------------------------------------------------------------------------
-  float [] updateVectors() {
+  float[] updateVectors() {
     float X = cos(radians(degree)) * speed;
     float Y = sin(radians(degree)) * speed;
-    float [] ans = {X, Y};
+    float[] ans = {X, Y};
     return ans;
   }
-  
-  float [] updateVectors(Entity other) {
+
+  float[] updateVectors(Entity other) {
     float X = cos(radians(degree)) * speed;
     float Y = sin(radians(degree)) * speed;
-    float [] otherDirection = other.updateVectors();
+    float[] otherDirection = other.updateVectors();
     X = X + otherDirection[0]; //adding vectors
     Y = Y + otherDirection[1]; //adding vectors
-    float [] ans = {X, Y};
+    float[] ans = {X, Y};
     return ans;
   }
-  
+
   //------------------------------------------------------------------------------------------------------------------------
   void moveCheckX(){
       x += addX;
@@ -61,7 +61,7 @@ class Entity {
   void moveCheckY(){
       y += addY;
   }
-  
+
   //------------------------------------------------------------------------------------------------------------------------
   boolean collision(Entity other) {
     if (other == null) {
@@ -73,9 +73,15 @@ class Entity {
     }
     return false;
   }
-  
+
   boolean collide(Entity[] others) {
-    for (Entity other: others) if (!this.equals(other)) if (collision(other)) return true;
+    for (Entity other: others) {
+      if (!this.equals(other)) {
+        if (collision(other)) {
+          return true;
+        }
+      }
+    }
     return false;
   }
 
@@ -83,23 +89,22 @@ class Entity {
     return collide(others.toArray(new Entity[others.size()]));
   }
   //------------------------------------------------------------------------------------------------------------------------
-  
-  
-  // Moves and prints out the Entity
+
+  // Prints out the Entity
   void update() {
     shape.rotate(radians(degree));
     shape(shape, x, y);
     shape.rotate(radians(-degree));
   }
-  
+
   /*
   void update(Entity other){
     move(other);
-    
+
     shape.rotate(radians(degree));
     shape(shape, x, y);
     shape.rotate(radians(-degree));
-    
+
     other.shape.rotate(radians(other.degree));
     shape(other.shape, other.x, other.y);
     other.shape.rotate(radians(-other.degree));

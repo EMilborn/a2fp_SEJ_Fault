@@ -19,7 +19,7 @@ boolean collision;
 void setup() {
   state = 0;
   fieldSize = 750;
-  ships = new Ship[2]; 
+  ships = new Ship[2];
   wins = new int[] {0, 0};
   size(1250,750);
   collision = false;
@@ -90,11 +90,11 @@ void drawRound() {
   //ships[0].update(ships[1]);
   for (Ship ship : ships) {
     if (ship != null && ship.state != ship.DEAD) {
-      
+
       /*//new implementation - start
       ship.move();
       ship.x += ship.addX;
-      
+
       if (ship.collide(field.toArray(new Entity[field.size()]))) {
         ship.x -= ship.addX;
         System.out.println("collided with x...");
@@ -143,7 +143,7 @@ void drawRound() {
   // Print out all bullets on screen
   for (int i = 0; i < bulletsFired.size(); i++) {
     Bullet bullet = (Bullet) bulletsFired.get(i);
-    if (bullet == null 
+    if (bullet == null
     || bullet.x >= bullet.gameWidth - bullet.border
     || bullet.x <= bullet.border
     || bullet.y >= bullet.gameHeight - bullet.border
@@ -155,11 +155,11 @@ void drawRound() {
       bullet.move();
       bullet.moveCheckX();
       bullet.moveCheckY();
-      bullet.update();  
+      bullet.update();
     }
   }
 }
-  
+
 void drawMenu() {
   textSize(100);
   text("ASTRO PARTY", 200, 100);
@@ -174,7 +174,7 @@ void drawMenu() {
 
 void mousePressed() {
   if (state == 0) {
-    if (mouseX >= 400 && mouseX <= 800 && 
+    if (mouseX >= 400 && mouseX <= 800 &&
       mouseY >= 250 && mouseY <= 350) {
         // Player pressed "Start"
         state = 1;

@@ -17,53 +17,42 @@ class Ship extends Entity {
   String col;
 
   int state;
-  
+
   //------------------------------------------------------------------------------------------------------------------------
-  Ship(Ship copy){
+
+  Ship(String col) {
     super();
-    col = copy.col;
-    size = copy.size;
-    x = copy.x;
-    y = copy.y;
-    degree = copy.degree;
-    speed = copy.speed;
-    numBullets = copy.numBullets;
-    bulletsFired = copy.bulletsFired;
-    keys = copy.keys;
-    cooldown = copy.cooldown;
-    state = copy.state;
-    updateShape();
-  }
-  Ship(String newCol) {
-    super();
-    col = newCol;
+    this.col = col;
     size = 15;
     x = width/2;
     y = height/2;
     degree = 50;
     speed = 4;
-    numBullets = MAX_BULLETS;
+
     bulletsFired = new ArrayList<Bullet>();
     keys = new boolean[] { false, false };
+
+    numBullets = MAX_BULLETS;
     cooldown = BULLET_REGEN_COOLDOWN;
     respawn = SHIP_RESPAWN_TIME;
     state = ALIVE;
+
     updateShape();
   }
 
-  Ship(int x, int y, int degree, String newCol) {
-    this(newCol);
+  Ship(int x, int y, int degree, String col) {
+    this(col);
     this.x = x;
     this.y = y;
     this.degree = degree;
   }
 
-  Ship(char[] keyLetters, String newCol) {
-    this(newCol);
+  Ship(char[] keyLetters, String col) {
+    this(col);
     this.keyLetters = keyLetters;
   }
-  
-  void updateShape(){
+
+  void updateShape() {
     shape = loadShape("images/"+col + "_" + numBullets + ".svg");
     shape.scale(3);
   }
@@ -72,7 +61,7 @@ class Ship extends Entity {
     super.update();
     updateHelp();
   }
-  
+
   /*
   void update(Ship other){
     if(collision(other)){
@@ -83,10 +72,8 @@ class Ship extends Entity {
       other.update();
     }
   }*/
-  
 
-
-  void updateHelp(){
+  void updateHelp() {
     if (keys[1]) {
       //turn
       degree += 3;
@@ -116,9 +103,8 @@ class Ship extends Entity {
       }
     }
   }
-  
-  
-  void borderCheck(){
+
+  void borderCheck() {
       if (!(x + addX + size > gameWidth - border || x + addX - size < border)) 
         x += addX;
       if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
@@ -158,10 +144,10 @@ class Ship extends Entity {
     }
     return null;
   }
-  
+
   void setXY(int x, int y) {
     this.x = x;
     this.y = y;
   }
-  
+
 }
