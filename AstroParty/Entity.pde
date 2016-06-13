@@ -24,7 +24,6 @@ class Entity {
     float [] add = updateVectors();
     addX = add[0];
     addY = add[1];
-    borderCheck();
   }
   
   void move(Entity other) {
@@ -33,8 +32,8 @@ class Entity {
     addY = add[1];
     other.addX = addX;
     other.addY = addY;
-    borderCheck();
-    other.borderCheck();
+    //borderCheck();
+    //other.borderCheck();
   }
 
   //------------------------------------------------------------------------------------------------------------------------
@@ -56,21 +55,44 @@ class Entity {
   }
   
   //------------------------------------------------------------------------------------------------------------------------
-  void borderCheck(){
+  void moveCheckX(){
       x += addX;
+  }
+  void moveCheckY(){
       y += addY;
   }
   
-  
   //------------------------------------------------------------------------------------------------------------------------
+  boolean collision(Entity other) {
+    if (other == null) {
+      return false;
+    }
+    float dSqrd = ((other.x - x)*(other.x - x)) + ((other.y - y)*(other.y - y));
+    if (dSqrd <= (size+other.size) * (size+other.size)) {
+      return true;
+    }
+    return false;
+  }
+  
+  boolean collide(Entity[] others) {
+    for (Entity other: others) if (!this.equals(other)) if (collision(other)) return true;
+    return false;
+  }
+
+  boolean collide(ArrayList<Entity> others) {
+    return collide(others.toArray(new Entity[others.size()]));
+  }
+  //------------------------------------------------------------------------------------------------------------------------
+  
+  
   // Moves and prints out the Entity
   void update() {
-    move();
     shape.rotate(radians(degree));
     shape(shape, x, y);
     shape.rotate(radians(-degree));
   }
   
+  /*
   void update(Entity other){
     move(other);
     
@@ -81,7 +103,7 @@ class Entity {
     other.shape.rotate(radians(other.degree));
     shape(other.shape, other.x, other.y);
     other.shape.rotate(radians(-other.degree));
-  }
+  }*/
 
   void collision() {}
 }

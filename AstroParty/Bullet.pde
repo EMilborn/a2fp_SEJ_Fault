@@ -6,7 +6,7 @@ class Bullet extends Entity {
     super();
     size = 2;
     border = 25;
-    speed = ship.speed*2;
+    speed = 10;
     degree = ship.degree;
     float[] vectors = updateVectors();
     // Bullet will spawn slightly in front of the ship

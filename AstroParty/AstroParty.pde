@@ -84,12 +84,36 @@ void setupField(){
 void drawRound() {
   // Print out all ships on screen
   for(Barrier i: field) i.update();
-  
+  Ship temp;
   //ships[0].update(ships[1]);
   for (Ship ship : ships) {
     if (ship != null && ship.state == ship.ALIVE) {
+      temp = new Ship(ship);
+      ship.move();
+      ship.moveCheckX();
+      /*
+      if(ship.collide(field.toArray(new Entity[field.size()]))) {
+        System.out.println("a");
+        ship = new Ship(temp);
+      }*/
+      ship.moveCheckY();
+      
+      /*if(ship.collide(field.toArray(new Entity[field.size()]))) {
+        System.out.println("b");
+        ship = new Ship(temp);
+      }*/
+      
+      /*
+      temp = new Ship(ship);
+      temp.move();
+      temp.moveCheckX();
+      //if(temp.collide(field.toArray(new Entity[field.size()]))) temp = new Ship(ship);
+      temp.moveCheckY();
+      //if(temp.collide(field.toArray(new Entity[field.size()]))) temp = new Ship(ship);
+      ship = new Ship(temp);
+      */
       ship.update();
-      if (ship.collide(bulletsFired)) {
+      if (ship.collideBullet(bulletsFired)) {
         if (ship == ships[0]) {
           // Player 2 won
           wins[1]++;
@@ -116,7 +140,10 @@ void drawRound() {
       // Maintainance
       bulletsFired.remove(i);
     } else {
-      bullet.update();
+      bullet.move();
+      bullet.moveCheckX();
+      bullet.moveCheckY();
+      bullet.update();  
     }
   }
 }
@@ -126,7 +153,7 @@ void drawMenu() {
   text("ASTRO PARTY", 200, 100);
   int rectWidth = 200;
   int rectHeight = 100;
-  rect((width/2)-(rectWidth/2), height/2, rectWidth, rectHeight);
+  rect(400, 230, rectWidth, rectHeight);
   textSize(50);
   fill(255, 0, 255);
   text("Start!", 435, 300);

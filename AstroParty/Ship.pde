@@ -39,7 +39,7 @@ class Ship extends Entity {
     x = width/2;
     y = height/2;
     degree = 50;
-    speed = 5;
+    speed = 4;
     numBullets = MAX_BULLETS;
     bulletsFired = new ArrayList<Bullet>();
     keys = new boolean[] { false, false };
@@ -70,7 +70,7 @@ class Ship extends Entity {
     updateHelp();
   }
   
-  
+  /*
   void update(Ship other){
     if(collision(other)){
       super.update(other);
@@ -79,7 +79,7 @@ class Ship extends Entity {
       this.update();
       other.update();
     }
-  }
+  }*/
   
 
 
@@ -103,12 +103,15 @@ class Ship extends Entity {
     }
   }
   
+  /*
   void borderCheck(){
       if (!(x + addX + size > gameWidth - border || x + addX - size < border)) 
         x += addX;
       if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
         y += addY;
-  }
+  }*/
+  
+  
   
   
   
@@ -126,7 +129,7 @@ class Ship extends Entity {
     return false;
   }
 
-  boolean collide(Entity[] others) {
+  boolean collideBullet(Entity[] others) {
     for (Entity other: others) {
       if (!this.equals(other)) {
         if (collision(other)) {
@@ -141,7 +144,7 @@ class Ship extends Entity {
     return false;
   }
 
-  boolean collide(ArrayList<Entity> others) {
+  boolean collideBullet(ArrayList<Entity> others) {
     return collide(others.toArray(new Entity[others.size()]));
   }
 
