@@ -11,7 +11,7 @@ class Barrier extends Entity {
   }
   
   Barrier(int X, int Y, boolean newbreakable){
-    this(X, Y, 30, newbreakable);
+    this(X, Y, 15, newbreakable);
   }
   
   

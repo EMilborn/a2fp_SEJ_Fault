@@ -103,13 +103,13 @@ class Ship extends Entity {
     }
   }
   
-  /*
+  
   void borderCheck(){
       if (!(x + addX + size > gameWidth - border || x + addX - size < border)) 
         x += addX;
       if (!(y + addY + size > gameHeight - border || y + addY - size < border)) 
         y += addY;
-  }*/
+  }
   
   
   

@@ -88,6 +88,8 @@ void drawRound() {
   //ships[0].update(ships[1]);
   for (Ship ship : ships) {
     if (ship != null && ship.state == ship.ALIVE) {
+      
+      //new implementation - start
       temp = new Ship(ship);
       ship.move();
       ship.moveCheckX();
@@ -103,16 +105,15 @@ void drawRound() {
         ship = new Ship(temp);
       }
       
-      /*
-      temp = new Ship(ship);
-      temp.move();
-      temp.moveCheckX();
-      //if(temp.collide(field.toArray(new Entity[field.size()]))) temp = new Ship(ship);
-      temp.moveCheckY();
-      //if(temp.collide(field.toArray(new Entity[field.size()]))) temp = new Ship(ship);
-      ship = new Ship(temp);
-      */
       ship.update();
+      //new implementation - end
+      
+      /*old implementation
+      ship.move();
+      ship.borderCheck();
+      ship.update();
+      */
+      
       if (ship.collideBullet(bulletsFired)) {
         if (ship == ships[0]) {
           // Player 2 won
