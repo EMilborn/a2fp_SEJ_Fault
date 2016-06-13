@@ -110,6 +110,11 @@ class Ship extends Entity {
         y += addY;
   }
   
+  
+  
+  
+  
+  
   boolean collision(Entity other) {
     if (other == null) {
       return false;
