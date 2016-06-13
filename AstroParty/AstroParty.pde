@@ -19,7 +19,7 @@ boolean collision;
 void setup() {
   state = 0;
   fieldSize = 750;
-  ships = new Ship [2]; 
+  ships = new Ship[2]; 
   wins = new int[] {0, 0};
   size(1250,750);
   collision = false;
@@ -68,6 +68,9 @@ void keyReleased(){
 void startRound() {
   ships[0] = new Ship(playerOneKeys, "green");
   ships[1] = new Ship(playerTwoKeys, "red");
+  ships[0].setXY(75, 75);
+  ships[1].setXY(675, 675);
+  ships[1].degree = 230; // 50 + 180
   bulletsFired = new ArrayList<Entity>();
   field = new ArrayList<Barrier>();
   setupField();
@@ -102,11 +105,9 @@ void drawRound() {
         ship.y -= ship.addY;
         System.out.println("collided with y...");
     }
-      
+
       ship.update();
       //new implementation - end*/
-      
-      
       ship.move();
       ship.borderCheck();
       ship.update();
